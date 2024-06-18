@@ -1,0 +1,33 @@
+/* carrito.component.scss */
+
+.breadcrumb-container {
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+}
+
+.card {
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+}
+
+.card-body .row {
+    width: 100%;
+}
+
+input.form-control {
+    width: 100px;
+}
+
+/* catalogo.component.scss */
+.container {
+    margin-top: 2rem;
+}
