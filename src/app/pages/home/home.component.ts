@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.productService.getProducts().subscribe({
       next: (data) => {
-        this.productos = data.productos.slice(0, 3);
+        this.productos = data.slice(0, 3);
         this.loading = false;
       },
       error: (err) => {

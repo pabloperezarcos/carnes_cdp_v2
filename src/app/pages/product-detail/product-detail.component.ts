@@ -37,8 +37,8 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe({
       next: (data) => {
         const sku = this.route.snapshot.paramMap.get('sku');
-        this.product = data.productos.find(p => p.sku === sku);
-        this.relatedProducts = data.productos.filter(p => p.sku !== sku).slice(0, 3);
+        this.product = data.find(p => p.sku === sku);
+        this.relatedProducts = data.filter(p => p.sku !== sku).slice(0, 3);
         this.loading = false;
       },
       error: (err) => {

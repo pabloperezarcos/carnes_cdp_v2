@@ -22,7 +22,7 @@ export class CatalogoComponent implements OnInit {
   ngOnInit() {
     this.productService.getProducts().subscribe({
       next: (data) => {
-        this.productos = data.productos;
+        this.productos = data;
         this.loading = false;
       },
       error: (err) => {
