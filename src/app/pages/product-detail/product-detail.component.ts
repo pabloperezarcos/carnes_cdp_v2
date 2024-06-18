@@ -1,5 +1,6 @@
+// product-detail.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
@@ -12,14 +13,13 @@ import { switchMap } from 'rxjs/operators';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.scss'
+  styleUrls: ['./product-detail.component.scss']
 })
-
 export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
   relatedProducts: Product[] = [];
   loading = true;
-  cantidad: number = 1;
+  quantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +38,6 @@ export class ProductDetailComponent implements OnInit {
       next: (data) => {
         const sku = this.route.snapshot.paramMap.get('sku');
         this.product = data.productos.find(p => p.sku === sku);
-        // Productos relacionados
         this.relatedProducts = data.productos.filter(p => p.sku !== sku).slice(0, 3);
         this.loading = false;
       },
@@ -50,11 +49,10 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  agregarAlCarrito(): void {
+  addToCarrito(): void {
     if (this.product) {
-      this.carritoService.agregarCarrito(this.product, this.cantidad);
+      this.carritoService.addToCarrito(this.product, this.quantity);
       alert('Producto agregado al carrito');
     }
   }
-
 }

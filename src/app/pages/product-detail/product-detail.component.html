@@ -13,7 +13,6 @@
     </nav>
 </div>
 
-<!-- product-detail.component.html -->
 <div *ngIf="loading">Cargando producto...</div>
 <div *ngIf="!loading && product" class="container">
     <div class="row">
@@ -24,15 +23,15 @@
             <h1 class="my-4">{{ product.nombre }}</h1>
             <p>SKU: {{ product.sku }}</p>
             <ul>
-                <li class="price-tag">Precio: {{ product.precio }} / 1 kilo</li>
+                <li class="price-tag">Precio: {{ product.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }} / 1 kilo</li>
             </ul>
             <h4 class="my-3">Descripción</h4>
             <p>{{ product.descripcion }}</p>
             <div class="my-3">
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" [(ngModel)]="cantidad" min="1">
+                <input type="number" id="cantidad" name="cantidad" [(ngModel)]="quantity" min="1">
             </div>
-            <button class="btn btn-primary" (click)="agregarAlCarrito()">Agregar al Carrito</button>
+            <button class="btn btn-primary" (click)="addToCarrito()">Agregar al Carrito</button>
         </div>
     </div>
     <h3 class="my-4">Productos Relacionados</h3>
@@ -43,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ relatedProduct.nombre }}</h5>
                     <p class="card-text">{{ relatedProduct.descripcion }}</p>
-                    <p class="price">{{ relatedProduct.precio }} / 1 kilo</p>
+                    <p class="price">{{ relatedProduct.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }} / 1 kilo</p>
                     <a [routerLink]="['/producto', relatedProduct.sku]" class="btn btn-primary">Ver Producto</a>
                 </div>
             </div>

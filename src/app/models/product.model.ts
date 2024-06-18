@@ -7,7 +7,7 @@ export class Product {
     imagen: string;
     slug: string;
     sku: string
-    /* estado: oferta */
+    /* estado: string oferta */
 
     constructor(
         nombre: string,
