@@ -4,6 +4,7 @@ import { CarritoService } from '../../services/carrito.service';
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 interface CarritoItem {
   product: Product;
@@ -15,11 +16,13 @@ interface CarritoItem {
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, RouterModule]
 })
 export class CarritoComponent implements OnInit {
   carritoItems: CarritoItem[] = [];
   total: number = 0;
+  paymentMethod: string = '';
+  paymentMessage: string = '';
 
   constructor(private carritoService: CarritoService) { }
 
@@ -42,5 +45,18 @@ export class CarritoComponent implements OnInit {
     this.carritoService.updateQuantity(this.carritoItems[index].product, quantity);
     this.carritoItems = this.carritoService.getCarritoItems();
     this.calculateTotal();
+  }
+
+  procederAlPago(): void {
+    if (!this.paymentMethod) {
+      this.paymentMessage = 'Seleccione un método de pago';
+      return;
+    }
+
+    this.paymentMessage = `Accediendo a Plataforma ${this.paymentMethod}...`;
+
+    setTimeout(() => {
+      this.paymentMessage = 'Pago Exitoso';
+    }, 3000);
   }
 }
