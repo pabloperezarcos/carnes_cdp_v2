@@ -25,7 +25,8 @@
                         </div>
                         <div class="col-md-6">
                             <h5>{{ item.product.nombre }}</h5>
-                            <p>{{ item.product.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }} x {{ item.quantity
+                            <p>{{ item.product.precio | currency:'CLP':'symbol':'1.0-0' }}
+                            x {{ item.quantity
                                 }}</p>
                         </div>
                         <div class="col-md-4 text-right">
@@ -43,7 +44,7 @@
             <h3>Resumen de la Compra</h3>
             <div class="card">
                 <div class="card-body">
-                    <p>Total: <strong>{{ total | currency:'CLP':'symbol':'1.0-0':'es-CL' }}</strong></p>
+                    <p>Total: <strong>{{ total | currency:'CLP':'symbol':'1.0-0' }}</strong></p>
                     <div>
                         <h5>Seleccione el método de pago</h5>
                         <div class="form-check">
