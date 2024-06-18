@@ -1,13 +1,13 @@
+// carrito.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
 import { CarritoService } from '../../services/carrito.service';
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface CarritoItem {
-  producto: Product;
-  cantidad: number;
+  product: Product;
+  quantity: number;
 }
 
 @Component({
@@ -24,23 +24,23 @@ export class CarritoComponent implements OnInit {
   constructor(private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    this.carritoItems = this.carritoService.obtenerItemsCarrito();
-    this.calcularTotal();
+    this.carritoItems = this.carritoService.getCarritoItems();
+    this.calculateTotal();
   }
 
-  calcularTotal(): void {
-    this.total = this.carritoItems.reduce((sum, item) => sum + item.producto.precio * item.cantidad, 0);
+  calculateTotal(): void {
+    this.total = this.carritoItems.reduce((sum, item) => sum + (item.product?.precio ?? 0) * (item.quantity ?? 0), 0);
   }
 
-  eliminarItem(index: number): void {
-    this.carritoService.eliminarDelCarrito(this.carritoItems[index].producto);
-    this.carritoItems = this.carritoService.obtenerItemsCarrito();
-    this.calcularTotal();
+  removeItem(index: number): void {
+    this.carritoService.removeFromCarrito(this.carritoItems[index].product);
+    this.carritoItems = this.carritoService.getCarritoItems();
+    this.calculateTotal();
   }
 
-  actualizarCantidad(index: number, cantidad: number): void {
-    this.carritoService.actualizarCantidad(this.carritoItems[index].producto, cantidad);
-    this.carritoItems = this.carritoService.obtenerItemsCarrito();
-    this.calcularTotal();
+  updateQuantity(index: number, quantity: number): void {
+    this.carritoService.updateQuantity(this.carritoItems[index].product, quantity);
+    this.carritoItems = this.carritoService.getCarritoItems();
+    this.calculateTotal();
   }
 }

@@ -1,4 +1,4 @@
-<!-- Sección principal del carrito de compras -->
+<!-- carrito.component.html -->
 <div class="jumbotron text-center">
     <h1 class="display-4">Carrito de Compras</h1>
     <p class="lead">Revisa tus productos antes de proceder al pago.</p>
@@ -20,19 +20,19 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2">
-                            <img [src]="item.producto.imagen" alt="{{ item.producto.nombre }}" class="img-thumbnail"
+                            <img [src]="item.product.imagen" alt="{{ item.product.nombre }}" class="img-thumbnail"
                                 style="width: 100%;">
                         </div>
-                        <div class="col-md6">
-                            <h5>{{ item.producto.nombre }}</h5>
-                            <p>{{ item.producto.precio | currency:'CLP':'symbol' }} x {{ item.cantidad }}</p>
+                        <div class="col-md-6">
+                            <h5>{{ item.product.nombre }}</h5>
+                            <p>{{ item.product.precio | currency:'$':'symbol':'1.0-0' }} x {{ item.quantity }}</p>
                         </div>
                         <div class="col-md-4 text-right">
                             <label for="cantidad-{{i}}" class="sr-only">Cantidad</label>
                             <input type="number" id="cantidad-{{i}}" class="form-control mb-2"
-                                [(ngModel)]="item.cantidad" (change)="actualizarCantidad(i, item.cantidad)" min="1"
+                                [(ngModel)]="item.quantity" (change)="updateQuantity(i, item.quantity)" min="1"
                                 title="Ingrese la cantidad" placeholder="Cantidad">
-                            <button class="btn btn-danger" (click)="eliminarItem(i)">Eliminar</button>
+                            <button class="btn btn-danger" (click)="removeItem(i)">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
             <h3>Resumen de la Compra</h3>
             <div class="card">
                 <div class="card-body">
-                    <p>Total: <strong>{{ total | currency:'CLP':'symbol' }}</strong></p>
-                    <button class="btn btn-primary btn-block">Proceder al Pago</button>
+                    <p>Total: <strong>{{ total | currency:'$':'symbol':'1.0-0' }}</strong></p> <button
+                        class="btn btn-primary btn-block">Proceder al Pago</button>
                 </div>
             </div>
         </div>
