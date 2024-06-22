@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, CurrencyPipe, NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
@@ -8,7 +8,7 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [NgFor, CommonModule, RouterModule],
+  imports: [NgFor, CommonModule, RouterModule, CurrencyPipe],
   templateUrl: './catalogo.component.html',
   styleUrl: './catalogo.component.scss'
 })
@@ -22,7 +22,7 @@ export class CatalogoComponent implements OnInit {
   ngOnInit() {
     this.productService.getProducts().subscribe({
       next: (data) => {
-        this.productos = data.productos;
+        this.productos = data;
         this.loading = false;
       },
       error: (err) => {

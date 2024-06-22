@@ -4,14 +4,15 @@ import { ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, CurrencyPipe],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
@@ -37,8 +38,8 @@ export class ProductDetailComponent implements OnInit {
     ).subscribe({
       next: (data) => {
         const sku = this.route.snapshot.paramMap.get('sku');
-        this.product = data.productos.find(p => p.sku === sku);
-        this.relatedProducts = data.productos.filter(p => p.sku !== sku).slice(0, 3);
+        this.product = data.find(p => p.sku === sku);
+        this.relatedProducts = data.filter(p => p.sku !== sku).slice(0, 3);
         this.loading = false;
       },
       error: (err) => {

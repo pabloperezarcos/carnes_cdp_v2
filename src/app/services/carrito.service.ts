@@ -1,6 +1,8 @@
 // carrito.service.ts
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
+import { BehaviorSubject } from 'rxjs';
+
 
 interface CarritoItem {
   product: Product;
@@ -12,6 +14,9 @@ interface CarritoItem {
 })
 export class CarritoService {
   private carritoItems: CarritoItem[] = [];
+  private carritoSubject = new BehaviorSubject<CarritoItem[]>(this.carritoItems);
+  carritoActualizado = this.carritoSubject.asObservable();
+
 
   constructor() {
     this.loadCarrito();
@@ -20,6 +25,7 @@ export class CarritoService {
   private saveCarrito(): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('carrito', JSON.stringify(this.carritoItems));
+      this.carritoSubject.next(this.carritoItems);
     }
   }
 
@@ -28,6 +34,7 @@ export class CarritoService {
       const carritoSaved = localStorage.getItem('carrito');
       if (carritoSaved) {
         this.carritoItems = JSON.parse(carritoSaved);
+        this.carritoSubject.next(this.carritoItems);
       }
     }
   }
@@ -45,6 +52,10 @@ export class CarritoService {
 
   getCarritoItems(): CarritoItem[] {
     return this.carritoItems;
+  }
+
+  getItemCount(): number {
+    return this.carritoItems.reduce((sum, item) => sum + item.quantity, 0);
   }
 
   addToCarrito(product: Product, quantity: number): void {
