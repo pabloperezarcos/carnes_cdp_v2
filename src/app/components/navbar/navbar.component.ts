@@ -21,8 +21,12 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private carritoService: CarritoService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.currentUser = this.authService.getCurrentUser();
+    this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+      this.isLoggedIn = isAuthenticated;
+    });
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+    });
     this.cartItemCount = this.carritoService.getItemCount();
     this.carritoService.carritoActualizado.subscribe(() => {
       this.cartItemCount = this.carritoService.getItemCount();
@@ -39,7 +43,7 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
-    this.isLoggedIn = false;
-    this.currentUser = null;
+/*     this.isLoggedIn = false;
+    this.currentUser = null; */
   }
 }

@@ -1,8 +1,8 @@
-// auth.service.ts
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 interface User {
   id: number;
@@ -19,29 +19,37 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'app/data/usuarios.json'; // Ruta correcta al archivo JSON
+  private apiUrl = 'app/data/usuarios.json';
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient) {
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  currentUser$ = this.currentUserSubject.asObservable();
+
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: any) {
     this.loadUserFromLocalStorage();
   }
 
-  private isAuthenticated = false;
-  private currentUser: User | null = null;
-
   private saveUserToLocalStorage(): void {
-    if (this.currentUser) {
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    if (this.isLocalStorageAvailable() && this.currentUserSubject.value) {
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUserSubject.value));
       localStorage.setItem('isAuthenticated', 'true');
     }
   }
 
   private loadUserFromLocalStorage(): void {
-    const user = localStorage.getItem('currentUser');
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    if (user && isAuthenticated) {
-      this.currentUser = JSON.parse(user);
-      this.isAuthenticated = isAuthenticated;
+    if (this.isLocalStorageAvailable()) {
+      const user = localStorage.getItem('currentUser');
+      const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+      if (user && isAuthenticated) {
+        this.currentUserSubject.next(JSON.parse(user));
+        this.isAuthenticatedSubject.next(isAuthenticated);
+      }
     }
+  }
+
+  private isLocalStorageAvailable(): boolean {
+    return isPlatformBrowser(this.platformId) && typeof localStorage !== 'undefined';
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -49,8 +57,8 @@ export class AuthService {
       map(response => {
         const user = response.usuarios.find(u => u.username === username && u.password === password);
         if (user) {
-          this.isAuthenticated = true;
-          this.currentUser = user;
+          this.isAuthenticatedSubject.next(true);
+          this.currentUserSubject.next(user);
           this.saveUserToLocalStorage();
           return true;
         } else {
@@ -61,17 +69,19 @@ export class AuthService {
   }
 
   logout(): void {
-    this.isAuthenticated = false;
-    this.currentUser = null;
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('isAuthenticated');
+    this.isAuthenticatedSubject.next(false);
+    this.currentUserSubject.next(null);
+    if (this.isLocalStorageAvailable()) {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('isAuthenticated');
+    }
   }
 
   isLoggedIn(): boolean {
-    return this.isAuthenticated;
+    return this.isAuthenticatedSubject.value;
   }
 
   getCurrentUser(): User | null {
-    return this.currentUser;
+    return this.currentUserSubject.value;
   }
 }
