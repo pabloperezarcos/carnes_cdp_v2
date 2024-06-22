@@ -13,23 +13,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="/catalogo">CATÁLOGO</a>
             </li>
-<!--             <li class="nav-item">
-                <a class="nav-link" href="#">NOSOTROS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">SUCURSAL</a>
-            </li> -->
         </ul>
         <form class="form-inline" (ngSubmit)="onSearch()">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" [(ngModel)]="searchQuery" name="search">
-          </form>
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar"
+                [(ngModel)]="searchQuery" name="search">
+        </form>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="#">Iniciar sesión | Registrarse</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/carrito">
-                    <img src="assets/carrito.png" alt="Carrito" style="height: 30px;">
+            <li class="nav-item position-relative cart-icon">
+                <a class="nav-item" href="/carrito">
+                    <img src="assets/carrito.png" alt="Carrito" class="cart-img">
+                    <span *ngIf="cartItemCount > 0" class="badge badge-pill badge-danger cart-badge">
+                        {{ cartItemCount }}
+                    </span>
                 </a>
             </li>
         </ul>

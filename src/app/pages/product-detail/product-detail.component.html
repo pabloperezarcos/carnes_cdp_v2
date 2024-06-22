@@ -23,7 +23,7 @@
             <h1 class="my-4">{{ product.nombre }}</h1>
             <p>SKU: {{ product.sku }}</p>
             <ul>
-                <li class="price-tag">Precio: {{ product.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }} / 1 kilo</li>
+                <li class="price-tag">Precio: {{ product.precio | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }} / 1 kilo</li>
             </ul>
             <h4 class="my-3">Descripción</h4>
             <p>{{ product.descripcion }}</p>
@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ relatedProduct.nombre }}</h5>
                     <p class="card-text">{{ relatedProduct.descripcion }}</p>
-                    <p class="price">{{ relatedProduct.precio | currency:'CLP':'symbol':'1.0-0':'es-CL' }} / 1 kilo</p>
+                    <p class="price">{{ relatedProduct.precio | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }} / 1 kilo</p>
                     <a [routerLink]="['/producto', relatedProduct.sku]" class="btn btn-primary">Ver Producto</a>
                 </div>
             </div>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,18 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule]
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   searchQuery: string = '';
+  cartItemCount: number = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private carritoService: CarritoService) { }
+
+  ngOnInit(): void {
+    this.cartItemCount = this.carritoService.getItemCount();
+    this.carritoService.carritoActualizado.subscribe(() => {
+      this.cartItemCount = this.carritoService.getItemCount();
+    });
+  }
 
   onSearch(): void {
     if (this.searchQuery) {

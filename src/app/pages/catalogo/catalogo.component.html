@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{product.nombre}}</h5>
                     <p class="card-text">{{product.descripcion}}</p>
-                    <p class="price">{{ product.precio | currency:'CLP':'symbol':'1.0-0' }} / 1 kilo</p>
+                    <p class="price">{{ product.precio | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }} / 1 kilo</p>
                     <a [routerLink]="['/producto', product.sku]" class="btn btn-primary">Ver Producto</a>
                 </div>
             </div>

@@ -4,14 +4,15 @@ import { ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, CurrencyPipe],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
