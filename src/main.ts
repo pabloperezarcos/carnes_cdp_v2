@@ -5,6 +5,7 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { registerLocaleData } from '@angular/common';
 import localeEsCL from '@angular/common/locales/es-CL';
+import '@angular/common/locales/global/es-CL';
 
 registerLocaleData(localeEsCL, 'es-CL');
 
