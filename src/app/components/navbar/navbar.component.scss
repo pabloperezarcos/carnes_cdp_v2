@@ -62,18 +62,6 @@ $background-color: #fff;
             }
         }
     }
-}
-
-.navbar {
-    .navbar-brand {
-        .rotate-on-hover {
-            transition: transform 0.5s ease;
-
-            &:hover {
-                transform: rotate(360deg);
-            }
-        }
-    }
 
     .cart-icon {
         .cart-img {
