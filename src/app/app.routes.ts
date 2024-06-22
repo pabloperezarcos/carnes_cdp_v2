@@ -6,6 +6,7 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'carrito', component: CarritoComponent},
     { path: 'search', component: SearchResultsComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegisterComponent}
+    { path: 'register', component: RegisterComponent},
+    { path: 'forgot-password', component: ForgotPasswordComponent}
 
 ];
