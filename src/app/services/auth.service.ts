@@ -1,3 +1,4 @@
+// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -18,12 +19,30 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'app/data/usuarios.json'; 
+  private apiUrl = 'app/data/usuarios.json'; // Ruta correcta al archivo JSON
+
+  constructor(private http: HttpClient) {
+    this.loadUserFromLocalStorage();
+  }
 
   private isAuthenticated = false;
   private currentUser: User | null = null;
 
-  constructor(private http: HttpClient) { }
+  private saveUserToLocalStorage(): void {
+    if (this.currentUser) {
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      localStorage.setItem('isAuthenticated', 'true');
+    }
+  }
+
+  private loadUserFromLocalStorage(): void {
+    const user = localStorage.getItem('currentUser');
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+    if (user && isAuthenticated) {
+      this.currentUser = JSON.parse(user);
+      this.isAuthenticated = isAuthenticated;
+    }
+  }
 
   login(username: string, password: string): Observable<boolean> {
     return this.http.get<{ usuarios: User[] }>(this.apiUrl).pipe(
@@ -32,6 +51,7 @@ export class AuthService {
         if (user) {
           this.isAuthenticated = true;
           this.currentUser = user;
+          this.saveUserToLocalStorage();
           return true;
         } else {
           return false;
@@ -43,6 +63,8 @@ export class AuthService {
   logout(): void {
     this.isAuthenticated = false;
     this.currentUser = null;
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('isAuthenticated');
   }
 
   isLoggedIn(): boolean {
