@@ -4,12 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-register',
   standalone: true,
   imports: [],
-  template: `
-    <p>
-      register works!
-    </p>
-  `,
-  styles: ``
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
 
