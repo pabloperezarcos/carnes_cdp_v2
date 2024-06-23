@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { CommonModule, NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
+interface Testimonio {
+  nombre: string;
+  comentario: string;
+  estrellas: number;
+  imagen: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -17,10 +23,14 @@ import { RouterModule } from '@angular/router';
 export class HomeComponent implements OnInit {
   productos: Product[] = [];
   loading = true;
+  testimonios: Testimonio[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get<{ testimonios: Testimonio[] }>('app/data/testimonios.json').subscribe(data => {
+      this.testimonios = data.testimonios;
+    });
     this.productService.getProducts().subscribe({
       next: (data) => {
         this.productos = data.slice(0, 3);
@@ -33,4 +43,13 @@ export class HomeComponent implements OnInit {
       complete: () => console.log('Carga de productos completa')
     });
   }
+
+  getEstrellas(estrellas: number): number[] {
+    return new Array(estrellas);
+  }
+
+  getEmptyEstrellas(estrellas: number): number[] {
+    return new Array(5 - estrellas);
+  }
+
 }

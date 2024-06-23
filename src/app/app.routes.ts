@@ -7,6 +7,8 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.component';
+import { AdminProductosComponent } from './pages/admin-productos/admin-productos.component';
 
 
 
@@ -18,6 +20,8 @@ export const routes: Routes = [
     { path: 'search', component: SearchResultsComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
-    { path: 'forgot-password', component: ForgotPasswordComponent}
+    { path: 'forgot-password', component: ForgotPasswordComponent},
+    { path: 'admin/usuarios', component: AdminUsuariosComponent},
+    { path: 'admin/productos', component: AdminProductosComponent}
 
 ];
