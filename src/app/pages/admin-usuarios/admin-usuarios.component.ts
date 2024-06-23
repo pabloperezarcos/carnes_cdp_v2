@@ -24,9 +24,11 @@ interface User {
 })
 export class AdminUsuariosComponent implements OnInit {
   usuarios: User[] = [];
+  filteredUsuarios: User[] = [];
   selectedUser: User | null = null;
   isEditing: boolean = false;
   isAdding: boolean = false;
+  searchQuery: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +39,20 @@ export class AdminUsuariosComponent implements OnInit {
   loadUsuarios(): void {
     this.http.get<{ usuarios: User[] }>('app/data/usuarios.json').subscribe(data => {
       this.usuarios = data.usuarios;
+      this.filteredUsuarios = data.usuarios;
     });
+  }
+
+  filterUsuarios(): void {
+    if (this.searchQuery) {
+      this.filteredUsuarios = this.usuarios.filter(user =>
+        user.nombre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        user.username.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        user.email.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      this.filteredUsuarios = this.usuarios;
+    }
   }
 
   selectUser(user: User): void {
@@ -55,11 +70,13 @@ export class AdminUsuariosComponent implements OnInit {
         this.usuarios[index] = this.selectedUser!;
       }
     }
+    this.filteredUsuarios = this.usuarios;
     this.cancelEdit();
   }
 
   deleteUser(user: User): void {
     this.usuarios = this.usuarios.filter(u => u.id !== user.id);
+    this.filteredUsuarios = this.usuarios;
   }
 
   cancelEdit(): void {
