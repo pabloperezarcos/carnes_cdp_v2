@@ -8,8 +8,7 @@
             "precio": "12480",
             "imagen": "/assets/productos/Lomo vetado porcionado.png",
             "slug": "bife-lomo-vetado",
-            "sku": "VA001523",
-            "estado": "oferta"
+            "sku": "VA001523"
         },
         {
             "id": 2,
@@ -19,8 +18,7 @@
             "precio": "17490",
             "imagen": "/assets/productos/filete en medallon.png",
             "slug": "filete-medallon",
-            "sku": "VA001524",
-            "estado": "agotado"
+            "sku": "VA001524"
         },
         {
             "id": 3,
@@ -50,8 +48,7 @@
             "precio": "7980",
             "imagen": "/assets/productos/Asado de tira porcionado.png",
             "slug": "asado-tira-porcionado",
-            "sku": "VA001527",
-            "estado": "oferta"
+            "sku": "VA001527"
         },
         {
             "id": 6,
