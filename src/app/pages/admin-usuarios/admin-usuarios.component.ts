@@ -29,6 +29,7 @@ export class AdminUsuariosComponent implements OnInit {
   isEditing: boolean = false;
   isAdding: boolean = false;
   searchQuery: string = '';
+  passwordFieldType: string = 'password';
 
   constructor(private http: HttpClient) { }
 
@@ -100,4 +101,10 @@ export class AdminUsuariosComponent implements OnInit {
     this.isAdding = true;
     this.isEditing = true;
   }
+
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
+
+
 }
