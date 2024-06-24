@@ -12,6 +12,7 @@ interface User {
   birthdate: string;
   address: string;
   rol: string;
+  imagen: string;
 }
 
 @Component({

@@ -12,6 +12,7 @@ interface User {
   birthdate: string;
   address: string;
   rol: string;
+  imagen: string;
 }
 
 @Component({
@@ -93,7 +94,8 @@ export class AdminUsuariosComponent implements OnInit {
       password: '',
       birthdate: '',
       address: '',
-      rol: 'cliente'
+      rol: 'cliente',
+      imagen: ''
     };
     this.isAdding = true;
     this.isEditing = true;

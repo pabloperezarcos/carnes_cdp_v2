@@ -11,6 +11,7 @@
     <table class="table table-hover">
       <thead class="table-dark">
         <tr>
+          <th>Foto</th>
           <th>Nombre</th>
           <th>Username</th>
           <th>Email</th>
@@ -20,6 +21,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of filteredUsuarios">
+          <td><img [src]="user.imagen" alt="Foto de perfil" class="img-thumbnail" style="width: 50px; height: 50px;"></td>
           <td>{{ user.nombre }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
@@ -68,7 +70,7 @@
         <label for="rol" class="form-label">Rol</label>
         <select class="form-select" id="rol" [(ngModel)]="selectedUser!.rol" name="rol" required>
           <option value="cliente">Cliente</option>
-          <option value="admin">Administrador</option>
+          <option value="admin">Admin</option>
         </select>
       </div>
       <button type="submit" class="btn btn-success me-2">{{ isAdding ? 'Agregar' : 'Guardar' }}</button>

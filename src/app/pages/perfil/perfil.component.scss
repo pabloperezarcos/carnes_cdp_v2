@@ -38,3 +38,19 @@ h2 {
     background-color: #6c757d;
     border-color: #6c757d;
 }
+
+.card {
+    .rounded-circle {
+        border: 2px solid #ddd;
+        padding: 5px;
+        object-fit: cover;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+}
