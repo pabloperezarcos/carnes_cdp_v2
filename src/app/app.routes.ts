@@ -9,6 +9,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.component';
 import { AdminProductosComponent } from './pages/admin-productos/admin-productos.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 
@@ -22,6 +23,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'forgot-password', component: ForgotPasswordComponent},
     { path: 'admin/usuarios', component: AdminUsuariosComponent},
-    { path: 'admin/productos', component: AdminProductosComponent}
+    { path: 'admin/productos', component: AdminProductosComponent},
+    { path: 'mi-perfil', component: PerfilComponent}
 
 ];
