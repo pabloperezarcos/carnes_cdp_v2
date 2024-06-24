@@ -13,6 +13,7 @@ interface User {
   birthdate: string;
   address: string;
   rol: string;
+  imagen: string;
 }
 
 @Injectable({
@@ -83,5 +84,33 @@ export class AuthService {
 
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
+  }
+
+  isAdmin(): boolean {
+    const user = this.currentUserSubject.value;
+    return user?.rol === 'admin';
+  }
+
+  updateUserProfile(updatedUser: User): void {
+    const currentUser = this.currentUserSubject.value;
+    if (currentUser) {
+      const usuarios = this.getUsersFromLocalStorage();
+      const userIndex = usuarios.findIndex(u => u.id === currentUser.id);
+      if (userIndex !== -1) {
+        usuarios[userIndex] = updatedUser;
+        this.currentUserSubject.next(updatedUser);
+        this.saveUsersToLocalStorage(usuarios);
+        this.saveUserToLocalStorage();
+      }
+    }
+  }
+
+  private getUsersFromLocalStorage(): User[] {
+    const usuariosJson = localStorage.getItem('usuarios');
+    return usuariosJson ? JSON.parse(usuariosJson) : [];
+  }
+
+  private saveUsersToLocalStorage(usuarios: User[]): void {
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
   }
 }

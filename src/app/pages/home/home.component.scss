@@ -1,6 +1,6 @@
 /* home.component.scss */
 .jumbotron {
-    background: url('../../../assets/presentacion.jpg') no-repeat center center;
+    background: url('/assets/presentacion.jpg') no-repeat center center;
     background-size: cover;
     color: white;
     padding: 6rem 2rem;
@@ -41,3 +41,38 @@
     position: relative;
 }
 
+.estrellas {
+    .fa-star {
+        color: #ffd700;
+    }
+
+    .fa-star.checked {
+        color: #ffd700;
+    }
+}
+
+.card {
+    .card-img-top {
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+    }
+}
+
+.estrellas {
+    .fa-star {
+        color: #d3d3d3;
+    }
+
+    .checked {
+        color: #ffc107;
+    }
+}

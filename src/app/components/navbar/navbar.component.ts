@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   searchQuery: string = '';
   cartItemCount: number = 0;
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   currentUser: any = null;
 
   constructor(private router: Router, private carritoService: CarritoService, private authService: AuthService) { }
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isAuthenticated$.subscribe(isAuthenticated => {
       this.isLoggedIn = isAuthenticated;
+      this.isAdmin = this.authService.getCurrentUser()?.rol === 'admin';
     });
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
@@ -43,7 +45,5 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
-/*     this.isLoggedIn = false;
-    this.currentUser = null; */
   }
 }

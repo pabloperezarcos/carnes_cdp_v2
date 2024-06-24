@@ -1,0 +1,22 @@
+{
+    "testimonios": [
+        {
+            "nombre": "Daniel Campos",
+            "comentario": "¡Los mejores productos de carne que he probado! La calidad es insuperable.",
+            "estrellas": 5,
+            "imagen": "/assets/danielCampos.png"
+        },
+        {
+            "nombre": "Carlos Martínez",
+            "comentario": "Excelente servicio y productos frescos. Definitivamente volveré a comprar.",
+            "estrellas": 4,
+            "imagen": "/assets/carlosMartinez.png"
+        },
+        {
+            "nombre": "Miau De la Paz",
+            "comentario": "Los productos son de primera calidad y el servicio es excelente. ¡Me encanta comprar aquí!",
+            "estrellas": 5,
+            "imagen": "/assets/MiauCabrera.png"
+        }
+    ]
+}
