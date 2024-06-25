@@ -21,7 +21,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of filteredUsuarios">
-          <td><img [src]="user.imagen" alt="Foto de perfil" class="img-thumbnail" style="width: 50px; height: 50px;"></td>
+          <td><img [src]="user.imagen" alt="Foto de perfil" class="img-thumbnail" style="width: 50px; height: 50px;">
+          </td>
           <td>{{ user.nombre }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
@@ -51,10 +52,22 @@
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" id="email" [(ngModel)]="selectedUser!.email" name="email" required>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 position-relative">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="selectedUser!.password" name="password"
-          required>
+        <input [type]="passwordFieldType" class="form-control" id="password" [(ngModel)]="selectedUser!.password"
+          name="password" required minlength="6" maxlength="8" pattern="^(?=.*[A-Z])(?=.*\d).{6,8}$"
+          #password="ngModel">
+        <button type="button" class="btn btn-link position-absolute" (click)="togglePasswordVisibility()"
+          style="top: 50%; right: 10px; transform: translateY(-50%);">
+          <i [ngClass]="passwordFieldType === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+        </button>
+        <div *ngIf="password.touched && password.invalid" class="text-danger">
+          <div *ngIf="password.errors?.['required']">La contraseña es requerida.</div>
+          <div *ngIf="password.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
+          <div *ngIf="password.errors?.['maxlength']">La contraseña no debe exceder los 8 caracteres.</div>
+          <div *ngIf="password.errors?.['pattern']">La contraseña debe contener al menos una mayúscula y un número.
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
