@@ -4,6 +4,10 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+/**
+ * LoginComponent maneja la lógica y la interfaz para el inicio de sesión de usuarios.
+ * Permite a los usuarios ingresar su nombre de usuario y contraseña para autenticarse.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,12 +16,21 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
+  username: string = ''; // Nombre de usuario ingresado
+  password: string = ''; // Contraseña ingresada
+  errorMessage: string = ''; // Mensaje de error para mostrar en caso de fallo en el inicio de sesión
 
+  /**
+   * Constructor que inyecta los servicios de autenticación y enrutamiento.
+   * @param authService Servicio de autenticación para gestionar el inicio de sesión.
+   * @param router Servicio de enrutamiento para navegar entre vistas.
+   */
   constructor(private authService: AuthService, private router: Router) { }
 
+  /**
+   * Maneja el proceso de inicio de sesión utilizando el servicio de autenticación.
+   * Si el inicio de sesión es exitoso, navega a la página principal. De lo contrario, muestra un mensaje de error.
+   */
   onLogin(): void {
     this.authService.login(this.username, this.password).subscribe(success => {
       if (success) {
@@ -27,5 +40,4 @@ export class LoginComponent {
       }
     });
   }
-
 }

@@ -1,4 +1,3 @@
-// product-detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
@@ -8,7 +7,10 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 
-
+/**
+ * ProductDetailComponent maneja la visualización de los detalles de un producto individual,
+ * incluyendo productos relacionados y la opción de agregar al carrito.
+ */
 @Component({
   selector: 'app-product-detail',
   standalone: true,
@@ -17,17 +19,26 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product | undefined;
-  relatedProducts: Product[] = [];
-  loading = true;
-  quantity: number = 1;
+  product: Product | undefined; // Producto actual
+  relatedProducts: Product[] = []; // Productos relacionados
+  loading = true; // Indicador de carga
+  quantity: number = 1; // Cantidad del producto a agregar al carrito
 
+  /**
+   * Constructor que inyecta las dependencias necesarias para obtener los detalles del producto y manejar el carrito.
+   * @param route Servicio para obtener información de la ruta activa.
+   * @param productService Servicio para gestionar productos.
+   * @param carritoService Servicio para gestionar el carrito de compras.
+   */
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private carritoService: CarritoService
   ) { }
 
+  /**
+   * Inicializa el componente cargando el producto y los productos relacionados basados en el SKU de la ruta.
+   */
   ngOnInit() {
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
@@ -50,6 +61,10 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Agrega el producto actual al carrito de compras.
+   * Muestra una alerta al usuario confirmando la acción.
+   */
   addToCarrito(): void {
     if (this.product) {
       this.carritoService.addToCarrito(this.product, this.quantity);

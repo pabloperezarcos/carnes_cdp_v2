@@ -4,6 +4,10 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+/**
+ * RegisterComponent maneja la lógica y la interfaz para el registro de nuevos usuarios.
+ * Permite a los usuarios crear una nueva cuenta proporcionando su información personal.
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,17 +16,26 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent {
-  nombre: string = '';
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  birthdate: string = '';
-  address: string = '';
-  errorMessage: string = '';
-  showPassword: boolean = false;
+  nombre: string = ''; // Nombre del usuario
+  username: string = ''; // Nombre de usuario
+  email: string = ''; // Correo electrónico del usuario
+  password: string = ''; // Contraseña del usuario
+  birthdate: string = ''; // Fecha de nacimiento del usuario
+  address: string = ''; // Dirección del usuario
+  errorMessage: string = ''; // Mensaje de error para mostrar en caso de fallo en el registro
+  showPassword: boolean = false; // Indica si la contraseña debe ser visible
 
+  /**
+   * Constructor que inyecta los servicios de autenticación y enrutamiento.
+   * @param authService Servicio de autenticación para gestionar el registro de usuarios.
+   * @param router Servicio de enrutamiento para navegar entre vistas.
+   */
   constructor(private authService: AuthService, private router: Router) { }
 
+  /**
+   * Maneja el proceso de registro utilizando el servicio de autenticación.
+   * Crea un nuevo usuario y redirige a la página de inicio de sesión.
+   */
   onRegister(): void {
     const newUser = {
       id: 0,
@@ -40,6 +53,10 @@ export class RegisterComponent {
     this.router.navigate(['/login']);
   }
 
+  /**
+   * Alterna la visibilidad del campo de contraseña entre texto y contraseña.
+   * @param inputId ID del campo de entrada de contraseña.
+   */
   togglePasswordVisibility(inputId: string): void {
     const input = document.getElementById(inputId) as HTMLInputElement;
     if (input) {
