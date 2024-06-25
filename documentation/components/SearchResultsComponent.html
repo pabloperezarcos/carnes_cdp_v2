@@ -124,6 +124,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>SearchResultsComponent maneja la lógica y visualización de los resultados de búsqueda de productos.
+Se suscribe a los parámetros de la ruta para obtener el término de búsqueda y solicita los datos correspondientes.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -250,12 +258,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/search-results/search-results.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/search-results/search-results.component.ts:24</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta las dependencias necesarias para la manipulación de rutas y servicios de productos.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -264,6 +274,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +289,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio que permite acceder a los parámetros de la ruta actual.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>productService</td>
@@ -290,6 +305,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio que proporciona acceso a las operaciones del API de productos.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -329,14 +348,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:36</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Se inicializa el componente y se suscribe a los cambios de los parámetros de consulta de la ruta para realizar la búsqueda.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -366,14 +387,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:47</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Realiza la búsqueda de productos utilizando el término de búsqueda actual.
+Actualiza la lista de resultados con los productos encontrados.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -413,10 +437,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/search-results/search-results.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/search-results/search-results.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>El término de búsqueda ingresado por el usuario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -444,10 +474,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/search-results/search-results.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/search-results/search-results.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de productos que coinciden con la búsqueda</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -464,19 +500,34 @@ import { Product } from &#x27;../../models/product.model&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
 
+/**
+ * SearchResultsComponent maneja la lógica y visualización de los resultados de búsqueda de productos.
+ * Se suscribe a los parámetros de la ruta para obtener el término de búsqueda y solicita los datos correspondientes.
+ */
 @Component({
   selector: &#x27;app-search-results&#x27;,
   templateUrl: &#x27;./search-results.component.html&#x27;,
   styleUrls: [&#x27;./search-results.component.scss&#x27;],
   standalone: true,
-  imports: [CommonModule, RouterModule] // Asegúrate de importar RouterModule aquí
+  imports: [CommonModule, RouterModule]
 })
 export class SearchResultsComponent implements OnInit {
+  /** El término de búsqueda ingresado por el usuario */
   query: string &#x3D; &#x27;&#x27;;
+
+  /** Lista de productos que coinciden con la búsqueda */
   results: Product[] &#x3D; [];
 
+  /**
+   * Constructor que inyecta las dependencias necesarias para la manipulación de rutas y servicios de productos.
+   * @param route Servicio que permite acceder a los parámetros de la ruta actual.
+   * @param productService Servicio que proporciona acceso a las operaciones del API de productos.
+   */
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
+  /**
+   * Se inicializa el componente y se suscribe a los cambios de los parámetros de consulta de la ruta para realizar la búsqueda.
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe(params &#x3D;&gt; {
       this.query &#x3D; params[&#x27;query&#x27;];
@@ -484,6 +535,10 @@ export class SearchResultsComponent implements OnInit {
     });
   }
 
+  /**
+   * Realiza la búsqueda de productos utilizando el término de búsqueda actual.
+   * Actualiza la lista de resultados con los productos encontrados.
+   */
   searchProducts(): void {
     if (this.query) {
       this.productService.searchProducts(this.query).subscribe(products &#x3D;&gt; {

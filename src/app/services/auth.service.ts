@@ -4,16 +4,35 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 
-// Definición de la interfaz para los usuarios
+/**
+ * Representa un usuario en el sistema.
+ */
 interface User {
+  /** Identificador único del usuario. */
   id: number;
+
+  /** Nombre completo del usuario. */
   nombre: string;
+
+  /** Nombre de usuario (username) del usuario. */
   username: string;
+
+  /** Correo electrónico del usuario. */
   email: string;
+
+  /** Contraseña del usuario. */
   password: string;
+
+  /** Fecha de nacimiento del usuario. */
   birthdate: string;
+
+  /** Dirección del usuario. */
   address: string;
+
+  /** Rol del usuario en el sistema (e.g., administrador, cliente). */
   rol: string;
+
+  /** URL de la imagen de perfil del usuario. */
   imagen: string;
 }
 
@@ -28,8 +47,8 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false); // Sujeto para el estado de autenticación
   private currentUserSubject = new BehaviorSubject<User | null>(null); // Sujeto para el usuario actual
 
-  isAuthenticated$ = this.isAuthenticatedSubject.asObservable(); // Observable para el estado de autenticación
-  currentUser$ = this.currentUserSubject.asObservable(); // Observable para el usuario actual
+  isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable(); // Observable para el estado de autenticación
+  currentUser$: Observable<User | null> = this.currentUserSubject.asObservable(); // Observable para el usuario actual
 
   /**
    * Constructor que inyecta el cliente HTTP y el identificador de plataforma.
@@ -37,6 +56,7 @@ export class AuthService {
    * @param platformId Identificador de plataforma para verificar si es un navegador.
    */
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: any) {
+    // Cargar usuario desde el almacenamiento local al inicializar el servicio
     this.loadUserFromLocalStorage();
   }
 
@@ -83,8 +103,10 @@ export class AuthService {
       map(response => {
         const user = response.usuarios.find(u => u.username === username && u.password === password);
         if (user) {
+          // Actualiza el estado de autenticación y el usuario actual
           this.isAuthenticatedSubject.next(true);
           this.currentUserSubject.next(user);
+          // Guarda el usuario en el almacenamiento local
           this.saveUserToLocalStorage();
           return true;
         } else {
@@ -98,8 +120,10 @@ export class AuthService {
    * Realiza el cierre de sesión del usuario actual.
    */
   logout(): void {
+    // Actualiza el estado de autenticación y limpia el usuario actual
     this.isAuthenticatedSubject.next(false);
     this.currentUserSubject.next(null);
+    // Limpia el almacenamiento local
     if (this.isLocalStorageAvailable()) {
       localStorage.removeItem('currentUser');
       localStorage.removeItem('isAuthenticated');

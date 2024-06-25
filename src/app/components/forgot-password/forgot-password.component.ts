@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 
 /**
- * Componente ForgotPasswordComponent permite a los usuarios solicitar una nueva contraseña si olvidaron la actual.
+ * ForgotPasswordComponent permite a los usuarios solicitar una nueva contraseña si olvidaron la actual.
  * Utiliza formularios reactivos para validar la entrada del usuario y enrutamiento para navegar entre vistas.
  */
 @Component({
@@ -15,10 +15,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule]
 })
 export class ForgotPasswordComponent implements OnInit {
-  // FormGroup para manejar el formulario de restablecimiento de contraseña
+  /** FormGroup para manejar el formulario de restablecimiento de contraseña */
   resetForm: FormGroup;
 
-  // Mensaje para mostrar al usuario
+  /** Mensaje para mostrar al usuario */
   message: string = '';
 
   /**
@@ -32,9 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  /**
-   * Inicialización del componente.
-   */
+  /** Inicialización del componente. */
   ngOnInit(): void { }
 
   /**

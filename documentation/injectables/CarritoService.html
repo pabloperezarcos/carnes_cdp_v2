@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>CarritoService gestiona la lógica del carrito de compras, incluyendo la adición, eliminación y actualización de productos.</p>
+
+            </p>
 
 
 
@@ -210,10 +217,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/carrito.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/services/carrito.service.ts:31</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que carga el carrito desde el almacenamiento local.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -243,14 +256,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:99</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Añade un producto al carrito o actualiza su cantidad si ya existe en el carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -261,6 +276,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -275,6 +291,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Producto a añadir.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>quantity</td>
@@ -287,6 +307,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Cantidad del producto a añadir.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -322,14 +346,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="134"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:134</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Vacía el carrito de compras.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -359,19 +385,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:82</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene los ítems en el carrito.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>CarritoItem[]</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Lista de ítems en el carrito.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -396,19 +428,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:90</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la cantidad total de ítems en el carrito.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Cantidad total de ítems en el carrito.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -435,19 +473,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:67</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si el almacenamiento local está disponible.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> si el almacenamiento local está disponible, <code>false</code> en caso contrario.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -474,14 +518,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Carga el carrito desde el almacenamiento local.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -511,14 +557,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="71"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:71</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:113</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un producto del carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -529,6 +577,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -543,6 +592,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Producto a eliminar.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -580,14 +633,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:43</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Guarda el carrito en el almacenamiento local.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -617,14 +672,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/services/carrito.service.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/services/carrito.service.ts:123</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza la cantidad de un producto en el carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -635,6 +692,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -649,6 +707,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Producto cuya cantidad se va a actualizar.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>quantity</td>
@@ -661,6 +723,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nueva cantidad del producto.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -700,10 +766,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/carrito.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/services/carrito.service.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable para los cambios en el carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -732,10 +804,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/carrito.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/services/carrito.service.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de ítems en el carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -758,10 +836,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/carrito.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/services/carrito.service.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sujeto para el estado del carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -775,25 +859,44 @@
 import { Product } from &#x27;../models/product.model&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
-
+// Definición de la interfaz para los ítems del carrito
+/**
+ * Representa un ítem en el carrito de compras.
+ */
 interface CarritoItem {
+  /** El producto del ítem del carrito. */
   product: Product;
+
+  /** La cantidad del producto en el carrito. */
   quantity: number;
 }
 
+/**
+ * CarritoService gestiona la lógica del carrito de compras, incluyendo la adición, eliminación y actualización de productos.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class CarritoService {
+  /** Lista de ítems en el carrito. */
   private carritoItems: CarritoItem[] &#x3D; [];
+
+  /** Sujeto para el estado del carrito. */
   private carritoSubject &#x3D; new BehaviorSubject&lt;CarritoItem[]&gt;(this.carritoItems);
+
+  /** Observable para los cambios en el carrito. */
   carritoActualizado &#x3D; this.carritoSubject.asObservable();
 
-
+  /**
+   * Constructor que carga el carrito desde el almacenamiento local.
+   */
   constructor() {
     this.loadCarrito();
   }
 
+  /**
+   * Guarda el carrito en el almacenamiento local.
+   */
   private saveCarrito(): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem(&#x27;carrito&#x27;, JSON.stringify(this.carritoItems));
@@ -801,6 +904,9 @@ export class CarritoService {
     }
   }
 
+  /**
+   * Carga el carrito desde el almacenamiento local.
+   */
   private loadCarrito(): void {
     if (this.isLocalStorageAvailable()) {
       const carritoSaved &#x3D; localStorage.getItem(&#x27;carrito&#x27;);
@@ -811,6 +917,10 @@ export class CarritoService {
     }
   }
 
+  /**
+   * Verifica si el almacenamiento local está disponible.
+   * @returns &#x60;true&#x60; si el almacenamiento local está disponible, &#x60;false&#x60; en caso contrario.
+   */
   private isLocalStorageAvailable(): boolean {
     try {
       const testKey &#x3D; &#x27;__test__&#x27;;
@@ -822,14 +932,27 @@ export class CarritoService {
     }
   }
 
+  /**
+   * Obtiene los ítems en el carrito.
+   * @returns Lista de ítems en el carrito.
+   */
   getCarritoItems(): CarritoItem[] {
     return this.carritoItems;
   }
 
+  /**
+   * Obtiene la cantidad total de ítems en el carrito.
+   * @returns Cantidad total de ítems en el carrito.
+   */
   getItemCount(): number {
     return this.carritoItems.reduce((sum, item) &#x3D;&gt; sum + item.quantity, 0);
   }
 
+  /**
+   * Añade un producto al carrito o actualiza su cantidad si ya existe en el carrito.
+   * @param product Producto a añadir.
+   * @param quantity Cantidad del producto a añadir.
+   */
   addToCarrito(product: Product, quantity: number): void {
     const existingProduct &#x3D; this.carritoItems.find(item &#x3D;&gt; item.product.sku &#x3D;&#x3D;&#x3D; product.sku);
     if (existingProduct) {
@@ -840,11 +963,20 @@ export class CarritoService {
     this.saveCarrito();
   }
 
+  /**
+   * Elimina un producto del carrito.
+   * @param product Producto a eliminar.
+   */
   removeFromCarrito(product: Product): void {
     this.carritoItems &#x3D; this.carritoItems.filter(item &#x3D;&gt; item.product.sku !&#x3D;&#x3D; product.sku);
     this.saveCarrito();
   }
 
+  /**
+   * Actualiza la cantidad de un producto en el carrito.
+   * @param product Producto cuya cantidad se va a actualizar.
+   * @param quantity Nueva cantidad del producto.
+   */
   updateQuantity(product: Product, quantity: number): void {
     const existingItem &#x3D; this.carritoItems.find(item &#x3D;&gt; item.product.sku &#x3D;&#x3D;&#x3D; product.sku);
     if (existingItem) {
@@ -853,6 +985,9 @@ export class CarritoService {
     this.saveCarrito();
   }
 
+  /**
+   * Vacía el carrito de compras.
+   */
   clearCarrito(): void {
     this.carritoItems &#x3D; [];
     this.saveCarrito();

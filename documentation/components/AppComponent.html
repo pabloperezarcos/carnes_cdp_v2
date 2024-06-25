@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>AppComponent es el componente raíz de la aplicación.
+Incluye la barra de navegación, el pie de página y un RouterOutlet para cargar los componentes de ruta.</p>
+
+    </p>
 
 
 
@@ -199,6 +207,10 @@ import { RouterOutlet } from &#x27;@angular/router&#x27;;
 import { NavbarComponent } from &quot;./components/navbar/navbar.component&quot;;
 import { FooterComponent } from &quot;./components/footer/footer.component&quot;;
 
+/**
+ * AppComponent es el componente raíz de la aplicación.
+ * Incluye la barra de navegación, el pie de página y un RouterOutlet para cargar los componentes de ruta.
+ */
 @Component({
     selector: &#x27;app-root&#x27;,
     standalone: true,
@@ -206,9 +218,7 @@ import { FooterComponent } from &quot;./components/footer/footer.component&quot;
     styleUrl: &#x27;./app.component.scss&#x27;,
     imports: [RouterOutlet, NavbarComponent, FooterComponent]
 })
-export class AppComponent {
-  
-}
+export class AppComponent { }
 </code></pre>
     </div>
 

@@ -16,14 +16,29 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent {
-  nombre: string = ''; // Nombre del usuario
-  username: string = ''; // Nombre de usuario
-  email: string = ''; // Correo electrónico del usuario
-  password: string = ''; // Contraseña del usuario
-  birthdate: string = ''; // Fecha de nacimiento del usuario
-  address: string = ''; // Dirección del usuario
-  errorMessage: string = ''; // Mensaje de error para mostrar en caso de fallo en el registro
-  showPassword: boolean = false; // Indica si la contraseña debe ser visible
+  /** Nombre del usuario. */
+  nombre: string = '';
+
+  /** Nombre de usuario. */
+  username: string = '';
+
+  /** Correo electrónico del usuario. */
+  email: string = '';
+
+  /** Contraseña del usuario. */
+  password: string = '';
+
+  /** Fecha de nacimiento del usuario. */
+  birthdate: string = '';
+
+  /** Dirección del usuario. */
+  address: string = '';
+
+  /** Mensaje de error para mostrar en caso de fallo en el registro. */
+  errorMessage: string = '';
+
+  /** Indica si la contraseña debe ser visible. */
+  showPassword: boolean = false;
 
   /**
    * Constructor que inyecta los servicios de autenticación y enrutamiento.

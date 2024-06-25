@@ -16,8 +16,11 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './catalogo.component.scss'
 })
 export class CatalogoComponent implements OnInit {
-  productos: Product[] = []; // Lista de productos
-  loading = true; // Indicador de carga
+  /** Lista de productos */
+  productos: Product[] = [];
+
+  /** Indicador de carga */
+  loading = true;
 
   /**
    * Constructor que inyecta el servicio de productos para obtener los datos de los productos.

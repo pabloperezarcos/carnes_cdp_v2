@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>ProductService gestiona las operaciones relacionadas con los productos, incluyendo la obtención y búsqueda de productos.</p>
+
+            </p>
 
 
 
@@ -179,12 +186,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/product.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/product.service.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta el cliente HTTP para realizar solicitudes.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -193,6 +202,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -207,6 +217,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Cliente HTTP para realizar solicitudes.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -242,19 +256,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/services/product.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/services/product.service.ts:26</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la lista de productos desde el archivo JSON.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Product.html" target="_self" >Observable&lt;Product[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable que emite una lista de productos.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -279,14 +299,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/services/product.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/services/product.service.ts:37</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Busca productos que coincidan con una consulta dada en el nombre o descripción del producto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -297,6 +319,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -311,6 +334,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>La consulta de búsqueda.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -320,7 +347,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable que emite una lista de productos que coinciden con la consulta.</p>
+
                             </div>
                 </td>
             </tr>
@@ -357,7 +385,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/product.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/product.service.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -376,24 +404,36 @@ import { Observable } from &#x27;rxjs&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 import { Product } from &#x27;../models/product.model&#x27;;
 
+/**
+ * ProductService gestiona las operaciones relacionadas con los productos, incluyendo la obtención y búsqueda de productos.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class ProductService {
-  private dataUrl &#x3D; &#x27;app/data/productos.json&#x27;;  // Ruta correcta al archivo JSON
+  private dataUrl &#x3D; &#x27;app/data/productos.json&#x27;; 
 
+  /**
+   * Constructor que inyecta el cliente HTTP para realizar solicitudes.
+   * @param http Cliente HTTP para realizar solicitudes.
+   */
   constructor(private http: HttpClient) { }
 
-/*   getProducts(): Observable&lt;{ productos: Product[] }&gt; {
-    return this.http.get&lt;{ productos: Product[] }&gt;(this.dataUrl);
-  } */
-
+  /**
+   * Obtiene la lista de productos desde el archivo JSON.
+   * @returns Observable que emite una lista de productos.
+   */
   getProducts(): Observable&lt;Product[]&gt; {
     return this.http.get&lt;{ productos: Product[] }&gt;(this.dataUrl).pipe(
-      map(response &#x3D;&gt; response.productos) // Asegúrate de que &#x27;productos&#x27; es el array en el JSON
+      map(response &#x3D;&gt; response.productos)
     );
   }
 
+  /**
+   * Busca productos que coincidan con una consulta dada en el nombre o descripción del producto.
+   * @param query La consulta de búsqueda.
+   * @returns Observable que emite una lista de productos que coinciden con la consulta.
+   */
   searchProducts(query: string): Observable&lt;Product[]&gt; {
     return this.getProducts().pipe(
       map(products &#x3D;&gt; products.filter(product &#x3D;&gt;

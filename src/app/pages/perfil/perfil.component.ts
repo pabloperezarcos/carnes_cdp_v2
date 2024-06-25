@@ -3,16 +3,35 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// Definición de la interfaz para los usuarios
+/**
+ * Representa un usuario en el sistema.
+ */
 interface User {
+  /** Identificador único del usuario. */
   id: number;
+
+  /** Nombre completo del usuario. */
   nombre: string;
+
+  /** Nombre de usuario (username) del usuario. */
   username: string;
+
+  /** Correo electrónico del usuario. */
   email: string;
+
+  /** Contraseña del usuario. */
   password: string;
+
+  /** Fecha de nacimiento del usuario. */
   birthdate: string;
+
+  /** Dirección del usuario. */
   address: string;
+
+  /** Rol del usuario en el sistema (e.g., administrador, cliente). */
   rol: string;
+
+  /** URL de la imagen de perfil del usuario. */
   imagen: string;
 }
 
@@ -28,8 +47,11 @@ interface User {
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-  user: User | null = null; // Usuario actual
-  editMode: boolean = false; // Indica si el modo de edición está activado
+  /** Usuario actual */
+  user: User | null = null;
+
+  /** Indica si el modo de edición está activado */
+  editMode: boolean = false;
 
   /**
    * Constructor que inyecta el servicio de autenticación para obtener y actualizar el perfil de usuario.

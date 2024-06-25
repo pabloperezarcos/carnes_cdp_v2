@@ -124,6 +124,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>ProductDetailComponent maneja la visualización de los detalles de un producto individual,
+incluyendo productos relacionados y la opción de agregar al carrito.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -258,12 +266,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:32</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta las dependencias necesarias para obtener los detalles del producto y manejar el carrito.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -272,6 +282,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -286,6 +297,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para obtener información de la ruta activa.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>productService</td>
@@ -298,6 +313,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para gestionar productos.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>carritoService</td>
@@ -310,6 +329,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para gestionar el carrito de compras.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -349,14 +372,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:75</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Agrega el producto actual al carrito de compras.
+Muestra una alerta al usuario confirmando la acción.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -386,14 +412,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente cargando el producto y los productos relacionados basados en el SKU de la ruta.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -427,10 +455,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:29</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicador de carga</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -453,10 +487,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Producto actual</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -484,10 +524,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cantidad del producto a agregar al carrito</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -515,10 +561,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/product-detail/product-detail.component.ts:26</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Productos relacionados</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -537,7 +589,10 @@ import { CommonModule, CurrencyPipe } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { switchMap } from &#x27;rxjs/operators&#x27;;
 
-
+/**
+ * ProductDetailComponent maneja la visualización de los detalles de un producto individual,
+ * incluyendo productos relacionados y la opción de agregar al carrito.
+ */
 @Component({
   selector: &#x27;app-product-detail&#x27;,
   standalone: true,
@@ -546,17 +601,33 @@ import { switchMap } from &#x27;rxjs/operators&#x27;;
   styleUrls: [&#x27;./product-detail.component.scss&#x27;]
 })
 export class ProductDetailComponent implements OnInit {
+  /** Producto actual */
   product: Product | undefined;
+
+  /** Productos relacionados */
   relatedProducts: Product[] &#x3D; [];
+
+  /** Indicador de carga */
   loading &#x3D; true;
+
+  /** Cantidad del producto a agregar al carrito */
   quantity: number &#x3D; 1;
 
+  /**
+   * Constructor que inyecta las dependencias necesarias para obtener los detalles del producto y manejar el carrito.
+   * @param route Servicio para obtener información de la ruta activa.
+   * @param productService Servicio para gestionar productos.
+   * @param carritoService Servicio para gestionar el carrito de compras.
+   */
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private carritoService: CarritoService
   ) { }
 
+  /**
+   * Inicializa el componente cargando el producto y los productos relacionados basados en el SKU de la ruta.
+   */
   ngOnInit() {
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) &#x3D;&gt; {
@@ -579,6 +650,10 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Agrega el producto actual al carrito de compras.
+   * Muestra una alerta al usuario confirmando la acción.
+   */
   addToCarrito(): void {
     if (this.product) {
       this.carritoService.addToCarrito(this.product, this.quantity);

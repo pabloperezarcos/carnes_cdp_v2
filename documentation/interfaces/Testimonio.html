@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Representa un testimonio de un cliente.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -206,6 +213,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Comentario del cliente sobre el producto o servicio.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -239,6 +252,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Número de estrellas que el cliente da al producto o servicio, típicamente entre 1 y 5.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -272,6 +291,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>URL de la imagen del cliente.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -305,6 +330,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre del cliente que da el testimonio.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -319,13 +350,26 @@ import { Product } from &#x27;../../models/product.model&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 
+/**
+ * Representa un testimonio de un cliente.
+ */
 interface Testimonio {
+  /** Nombre del cliente que da el testimonio. */
   nombre: string;
+
+  /** Comentario del cliente sobre el producto o servicio. */
   comentario: string;
+
+  /** Número de estrellas que el cliente da al producto o servicio, típicamente entre 1 y 5. */
   estrellas: number;
+
+  /** URL de la imagen del cliente. */
   imagen: string;
 }
 
+/**
+ * HomeComponent maneja la visualización de la página principal, incluyendo una lista de productos destacados y testimonios.
+ */
 @Component({
   selector: &#x27;app-home&#x27;,
   standalone: true,
@@ -333,14 +377,26 @@ interface Testimonio {
   templateUrl: &#x27;./home.component.html&#x27;,
   styleUrl: &#x27;./home.component.scss&#x27;
 })
-
 export class HomeComponent implements OnInit {
+  /** Lista de productos */
   productos: Product[] &#x3D; [];
+
+  /** Indicador de carga */
   loading &#x3D; true;
+
+  /** Lista de testimonios */
   testimonios: Testimonio[] &#x3D; [];
 
+  /**
+   * Constructor que inyecta el servicio de productos y el cliente HTTP.
+   * @param productService Servicio que proporciona operaciones relacionadas con los productos.
+   * @param http Cliente HTTP para solicitudes a servicios externos.
+   */
   constructor(private productService: ProductService, private http: HttpClient) { }
 
+  /**
+   * Inicializa el componente cargando la lista de productos y testimonios.
+   */
   ngOnInit() {
     this.http.get&lt;{ testimonios: Testimonio[] }&gt;(&#x27;app/data/testimonios.json&#x27;).subscribe(data &#x3D;&gt; {
       this.testimonios &#x3D; data.testimonios;
@@ -358,15 +414,25 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * Genera un arreglo de números basado en la cantidad de estrellas, para mostrar las estrellas llenas.
+   * @param estrellas Número de estrellas.
+   * @returns Un arreglo de números con la longitud de las estrellas.
+   */
   getEstrellas(estrellas: number): number[] {
     return new Array(estrellas);
   }
 
+  /**
+   * Genera un arreglo de números basado en la cantidad de estrellas vacías, para mostrar las estrellas vacías.
+   * @param estrellas Número de estrellas llenas.
+   * @returns Un arreglo de números con la longitud de las estrellas vacías.
+   */
   getEmptyEstrellas(estrellas: number): number[] {
     return new Array(5 - estrellas);
   }
-
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

@@ -124,6 +124,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>PerfilComponent maneja la visualización y edición del perfil de usuario.
+Permite a los usuarios ver y actualizar su información de perfil.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -253,12 +261,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/perfil/perfil.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/perfil/perfil.component.ts:54</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta el servicio de autenticación para obtener y actualizar el perfil de usuario.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -267,6 +277,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -281,6 +292,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de autenticación para gestionar el perfil de usuario.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -320,14 +335,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/pages/perfil/perfil.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/pages/perfil/perfil.component.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente obteniendo el usuario actual desde el servicio de autenticación.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -357,14 +374,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/pages/perfil/perfil.component.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/pages/perfil/perfil.component.ts:80</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Guarda los cambios realizados en el perfil de usuario utilizando el servicio de autenticación.
+Desactiva el modo de edición después de guardar.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -394,14 +414,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/pages/perfil/perfil.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/pages/perfil/perfil.component.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna el modo de edición del perfil.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -441,10 +463,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/perfil/perfil.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/perfil/perfil.component.ts:54</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el modo de edición está activado</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -472,10 +500,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/perfil/perfil.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/pages/perfil/perfil.component.ts:51</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario actual</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -490,18 +524,42 @@ import { AuthService } from &#x27;../../services/auth.service&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 
+/**
+ * Representa un usuario en el sistema.
+ */
 interface User {
+  /** Identificador único del usuario. */
   id: number;
+
+  /** Nombre completo del usuario. */
   nombre: string;
+
+  /** Nombre de usuario (username) del usuario. */
   username: string;
+
+  /** Correo electrónico del usuario. */
   email: string;
+
+  /** Contraseña del usuario. */
   password: string;
+
+  /** Fecha de nacimiento del usuario. */
   birthdate: string;
+
+  /** Dirección del usuario. */
   address: string;
+
+  /** Rol del usuario en el sistema (e.g., administrador, cliente). */
   rol: string;
+
+  /** URL de la imagen de perfil del usuario. */
   imagen: string;
 }
 
+/**
+ * PerfilComponent maneja la visualización y edición del perfil de usuario.
+ * Permite a los usuarios ver y actualizar su información de perfil.
+ */
 @Component({
   selector: &#x27;app-perfil&#x27;,
   standalone: true,
@@ -510,19 +568,36 @@ interface User {
   styleUrls: [&#x27;./perfil.component.scss&#x27;]
 })
 export class PerfilComponent implements OnInit {
+  /** Usuario actual */
   user: User | null &#x3D; null;
+
+  /** Indica si el modo de edición está activado */
   editMode: boolean &#x3D; false;
 
+  /**
+   * Constructor que inyecta el servicio de autenticación para obtener y actualizar el perfil de usuario.
+   * @param authService Servicio de autenticación para gestionar el perfil de usuario.
+   */
   constructor(private authService: AuthService) { }
 
+  /**
+   * Inicializa el componente obteniendo el usuario actual desde el servicio de autenticación.
+   */
   ngOnInit(): void {
     this.user &#x3D; this.authService.getCurrentUser();
   }
 
+  /**
+   * Alterna el modo de edición del perfil.
+   */
   toggleEditMode(): void {
     this.editMode &#x3D; !this.editMode;
   }
 
+  /**
+   * Guarda los cambios realizados en el perfil de usuario utilizando el servicio de autenticación.
+   * Desactiva el modo de edición después de guardar.
+   */
   saveProfile(): void {
     if (this.user) {
       this.authService.updateUserProfile(this.user);

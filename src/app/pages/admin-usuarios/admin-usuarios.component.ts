@@ -4,16 +4,35 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
-// Definición de la interfaz para los usuarios
+/**
+ * Representa un usuario en el sistema.
+ */
 interface User {
+  /** Identificador único del usuario. */
   id: number;
+
+  /** Nombre completo del usuario. */
   nombre: string;
+
+  /** Nombre de usuario (username) del usuario. */
   username: string;
+
+  /** Correo electrónico del usuario. */
   email: string;
+
+  /** Contraseña del usuario. */
   password: string;
+
+  /** Fecha de nacimiento del usuario. */
   birthdate: string;
+
+  /** Dirección del usuario. */
   address: string;
+
+  /** Rol del usuario en el sistema (e.g., administrador, cliente). */
   rol: string;
+
+  /** URL de la imagen de perfil del usuario. */
   imagen: string;
 }
 
@@ -29,13 +48,26 @@ interface User {
   styleUrls: ['./admin-usuarios.component.scss']
 })
 export class AdminUsuariosComponent implements OnInit {
-  usuarios: User[] = []; // Lista de todos los usuarios
-  filteredUsuarios: User[] = []; // Lista de usuarios filtrados
-  selectedUser: User | null = null; // Usuario seleccionado para editar
-  isEditing: boolean = false; // Indica si se está en modo edición
-  isAdding: boolean = false; // Indica si se está añadiendo un nuevo usuario
-  searchQuery: string = ''; // Consulta de búsqueda para filtrar usuarios
-  passwordFieldType: string = 'password'; // Tipo de campo para la contraseña, para mostrar u ocultar
+  /** Lista de todos los usuarios */
+  usuarios: User[] = [];
+
+  /** Lista de usuarios filtrados */
+  filteredUsuarios: User[] = [];
+
+  /** Usuario seleccionado para editar */
+  selectedUser: User | null = null;
+
+  /** Indica si se está en modo edición */
+  isEditing: boolean = false;
+
+  /** Indica si se está añadiendo un nuevo usuario */
+  isAdding: boolean = false;
+
+  /** Consulta de búsqueda para filtrar usuarios */
+  searchQuery: string = '';
+
+  /** Tipo de campo para la contraseña, para mostrar u ocultar */
+  passwordFieldType: string = 'password';
 
   /**
    * Constructor que inyecta las dependencias necesarias para realizar solicitudes HTTP y servicios de autenticación.

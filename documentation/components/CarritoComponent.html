@@ -124,6 +124,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>CarritoComponent maneja la visualización y lógica del carrito de compras.
+Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -273,12 +281,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:44</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta el servicio de carrito para gestionar los ítems del carrito.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -287,6 +297,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -301,6 +312,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio que proporciona operaciones relacionadas con el carrito de compras.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -340,14 +355,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:64</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Calcula el total del carrito sumando los precios de los productos por sus cantidades.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -377,14 +394,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:93</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si el carrito está vacío y actualiza el estado correspondiente.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -414,14 +433,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:55</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente cargando los ítems del carrito y calculando el total.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -451,14 +472,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Procede al pago, mostrando mensajes según el estado del proceso de pago.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -488,14 +511,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un ítem del carrito basado en su índice y actualiza el total y el estado del carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -506,6 +531,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -520,6 +546,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Índice del ítem a eliminar.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -555,14 +585,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:84</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza la cantidad de un ítem en el carrito y recalcula el total.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -573,6 +605,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -587,6 +620,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Índice del ítem a actualizar.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>quantity</td>
@@ -599,6 +636,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nueva cantidad del ítem.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -644,10 +685,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de ítems en el carrito</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -675,10 +722,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:44</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el carrito está vacío</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -706,10 +759,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:41</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de estado del pago</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -737,10 +796,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:38</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método de pago seleccionado</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -768,10 +833,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total del carrito</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -788,11 +859,21 @@ import { CommonModule, CurrencyPipe } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
 
+/**
+ * Representa un ítem en el carrito de compras.
+ */
 interface CarritoItem {
+  /** El producto del ítem del carrito. */
   product: Product;
+
+  /** La cantidad del producto en el carrito. */
   quantity: number;
 }
 
+/**
+ * CarritoComponent maneja la visualización y lógica del carrito de compras.
+ * Permite agregar, actualizar y eliminar productos, así como proceder al pago.
+ */
 @Component({
   selector: &#x27;app-carrito&#x27;,
   templateUrl: &#x27;./carrito.component.html&#x27;,
@@ -801,24 +882,47 @@ interface CarritoItem {
   imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe]
 })
 export class CarritoComponent implements OnInit {
+  /** Lista de ítems en el carrito */
   carritoItems: CarritoItem[] &#x3D; [];
+
+  /** Total del carrito */
   total: number &#x3D; 0;
+
+  /** Método de pago seleccionado */
   paymentMethod: string &#x3D; &#x27;&#x27;;
+
+  /** Mensaje de estado del pago */
   paymentMessage: string &#x3D; &#x27;&#x27;;
+
+  /** Indica si el carrito está vacío */
   isCartEmpty: boolean &#x3D; true;
 
+  /**
+   * Constructor que inyecta el servicio de carrito para gestionar los ítems del carrito.
+   * @param carritoService Servicio que proporciona operaciones relacionadas con el carrito de compras.
+   */
   constructor(private carritoService: CarritoService) { }
 
+  /**
+   * Inicializa el componente cargando los ítems del carrito y calculando el total.
+   */
   ngOnInit(): void {
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
     this.calculateTotal();
     this.checkIfCartIsEmpty();
   }
 
+  /**
+   * Calcula el total del carrito sumando los precios de los productos por sus cantidades.
+   */
   calculateTotal(): void {
     this.total &#x3D; this.carritoItems.reduce((sum, item) &#x3D;&gt; sum + (item.product?.precio ?? 0) * (item.quantity ?? 0), 0);
   }
 
+  /**
+   * Elimina un ítem del carrito basado en su índice y actualiza el total y el estado del carrito.
+   * @param index Índice del ítem a eliminar.
+   */
   removeItem(index: number): void {
     this.carritoService.removeFromCarrito(this.carritoItems[index].product);
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
@@ -826,16 +930,27 @@ export class CarritoComponent implements OnInit {
     this.checkIfCartIsEmpty();
   }
 
+  /**
+   * Actualiza la cantidad de un ítem en el carrito y recalcula el total.
+   * @param index Índice del ítem a actualizar.
+   * @param quantity Nueva cantidad del ítem.
+   */
   updateQuantity(index: number, quantity: number): void {
     this.carritoService.updateQuantity(this.carritoItems[index].product, quantity);
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
     this.calculateTotal();
   }
 
+  /**
+   * Verifica si el carrito está vacío y actualiza el estado correspondiente.
+   */
   checkIfCartIsEmpty(): void {
     this.isCartEmpty &#x3D; this.carritoItems.length &#x3D;&#x3D;&#x3D; 0;
   }
 
+  /**
+   * Procede al pago, mostrando mensajes según el estado del proceso de pago.
+   */
   procederAlPago(): void {
     if (!this.paymentMethod) {
       this.paymentMessage &#x3D; &#x27;Seleccione un método de pago&#x27;;

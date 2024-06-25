@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Representa un usuario en el sistema.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -236,6 +243,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Dirección del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -269,6 +282,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Fecha de nacimiento del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -302,6 +321,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Correo electrónico del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -335,6 +360,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Identificador único del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -368,6 +399,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>URL de la imagen de perfil del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -401,6 +438,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre completo del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -434,6 +477,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Contraseña del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -467,6 +516,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Rol del usuario en el sistema (e.g., administrador, cliente).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -500,6 +555,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre de usuario (username) del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -513,18 +574,42 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { AuthService } from &#x27;../../services/auth.service&#x27;;
 
+/**
+ * Representa un usuario en el sistema.
+ */
 interface User {
+  /** Identificador único del usuario. */
   id: number;
+
+  /** Nombre completo del usuario. */
   nombre: string;
+
+  /** Nombre de usuario (username) del usuario. */
   username: string;
+
+  /** Correo electrónico del usuario. */
   email: string;
+
+  /** Contraseña del usuario. */
   password: string;
+
+  /** Fecha de nacimiento del usuario. */
   birthdate: string;
+
+  /** Dirección del usuario. */
   address: string;
+
+  /** Rol del usuario en el sistema (e.g., administrador, cliente). */
   rol: string;
+
+  /** URL de la imagen de perfil del usuario. */
   imagen: string;
 }
 
+/**
+ * AdminUsuariosComponent gestiona la administración de usuarios, permitiendo agregar, editar y eliminar usuarios.
+ * Incluye funcionalidades de filtrado y selección de usuarios.
+ */
 @Component({
   selector: &#x27;app-admin-usuarios&#x27;,
   standalone: true,
@@ -533,20 +618,45 @@ interface User {
   styleUrls: [&#x27;./admin-usuarios.component.scss&#x27;]
 })
 export class AdminUsuariosComponent implements OnInit {
+  /** Lista de todos los usuarios */
   usuarios: User[] &#x3D; [];
+
+  /** Lista de usuarios filtrados */
   filteredUsuarios: User[] &#x3D; [];
+
+  /** Usuario seleccionado para editar */
   selectedUser: User | null &#x3D; null;
+
+  /** Indica si se está en modo edición */
   isEditing: boolean &#x3D; false;
+
+  /** Indica si se está añadiendo un nuevo usuario */
   isAdding: boolean &#x3D; false;
+
+  /** Consulta de búsqueda para filtrar usuarios */
   searchQuery: string &#x3D; &#x27;&#x27;;
+
+  /** Tipo de campo para la contraseña, para mostrar u ocultar */
   passwordFieldType: string &#x3D; &#x27;password&#x27;;
 
+  /**
+   * Constructor que inyecta las dependencias necesarias para realizar solicitudes HTTP y servicios de autenticación.
+   * @param http Cliente HTTP para solicitudes a servicios externos.
+   * @param authService Servicio de autenticación para gestionar usuarios.
+   */
   constructor(private http: HttpClient, private authService: AuthService) { }
 
+  /**
+   * Se inicializa el componente cargando la lista de usuarios.
+   */
   ngOnInit(): void {
     this.loadUsuarios();
   }
 
+  /**
+   * Carga los usuarios desde un archivo JSON externo y actualiza las listas de usuarios y usuarios filtrados.
+   * También obtiene todos los usuarios del servicio de autenticación.
+   */
   loadUsuarios(): void {
     this.http.get&lt;{ usuarios: User[] }&gt;(&#x27;app/data/usuarios.json&#x27;).subscribe(data &#x3D;&gt; {
       this.usuarios &#x3D; data.usuarios;
@@ -555,6 +665,9 @@ export class AdminUsuariosComponent implements OnInit {
     });
   }
 
+  /**
+   * Filtra los usuarios basándose en el nombre, nombre de usuario o correo electrónico según la consulta de búsqueda.
+   */
   filterUsuarios(): void {
     if (this.searchQuery) {
       this.filteredUsuarios &#x3D; this.usuarios.filter(user &#x3D;&gt;
@@ -567,12 +680,19 @@ export class AdminUsuariosComponent implements OnInit {
     }
   }
 
+  /**
+   * Selecciona un usuario para editar y ajusta los modos de edición y agregación.
+   * @param user Usuario a editar.
+   */
   selectUser(user: User): void {
     this.selectedUser &#x3D; { ...user };
     this.isEditing &#x3D; true;
     this.isAdding &#x3D; false;
   }
 
+  /**
+   * Guarda los cambios realizados a un usuario existente o añade un nuevo usuario a la lista.
+   */
   saveUser(): void {
     if (this.isAdding) {
       this.authService.addUser(this.selectedUser!);
@@ -587,17 +707,27 @@ export class AdminUsuariosComponent implements OnInit {
     this.cancelEdit();
   }
 
+  /**
+   * Elimina un usuario de la lista.
+   * @param user Usuario a eliminar.
+   */
   deleteUser(user: User): void {
     this.usuarios &#x3D; this.usuarios.filter(u &#x3D;&gt; u.id !&#x3D;&#x3D; user.id);
     this.filteredUsuarios &#x3D; [...this.usuarios];
   }
 
+  /**
+   * Cancela el modo de edición o agregación y limpia el usuario seleccionado.
+   */
   cancelEdit(): void {
     this.selectedUser &#x3D; null;
     this.isEditing &#x3D; false;
     this.isAdding &#x3D; false;
   }
 
+  /**
+   * Prepara un nuevo usuario para ser añadido a la lista y activa los modos de edición y agregación.
+   */
   addUser(): void {
     this.selectedUser &#x3D; {
       id: this.usuarios.length + 1,
@@ -614,11 +744,12 @@ export class AdminUsuariosComponent implements OnInit {
     this.isEditing &#x3D; true;
   }
 
+  /**
+   * Alterna la visibilidad del campo de contraseña entre texto y contraseña.
+   */
   togglePasswordVisibility(): void {
     this.passwordFieldType &#x3D; this.passwordFieldType &#x3D;&#x3D;&#x3D; &#x27;password&#x27; ? &#x27;text&#x27; : &#x27;password&#x27;;
   }
-
-
 }
 </code></pre>
     </div>

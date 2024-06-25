@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>CatalogoComponent maneja la visualización del catálogo de productos.
+Muestra una lista de productos obtenidos del servicio de productos.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -245,12 +253,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta el servicio de productos para obtener los datos de los productos.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -259,6 +269,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -273,6 +284,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio que proporciona operaciones relacionadas con los productos.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -312,14 +327,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:34</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente cargando la lista de productos.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -353,10 +370,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicador de carga</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -384,10 +407,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de productos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -403,7 +432,10 @@ import { RouterModule } from &#x27;@angular/router&#x27;;
 import { Product } from &#x27;../../models/product.model&#x27;;
 import { ProductService } from &#x27;../../services/product.service&#x27;;
 
-
+/**
+ * CatalogoComponent maneja la visualización del catálogo de productos.
+ * Muestra una lista de productos obtenidos del servicio de productos.
+ */
 @Component({
   selector: &#x27;app-catalogo&#x27;,
   standalone: true,
@@ -411,13 +443,22 @@ import { ProductService } from &#x27;../../services/product.service&#x27;;
   templateUrl: &#x27;./catalogo.component.html&#x27;,
   styleUrl: &#x27;./catalogo.component.scss&#x27;
 })
-
 export class CatalogoComponent implements OnInit {
+  /** Lista de productos */
   productos: Product[] &#x3D; [];
+
+  /** Indicador de carga */
   loading &#x3D; true;
 
+  /**
+   * Constructor que inyecta el servicio de productos para obtener los datos de los productos.
+   * @param productService Servicio que proporciona operaciones relacionadas con los productos.
+   */
   constructor(private productService: ProductService) { }
 
+  /**
+   * Inicializa el componente cargando la lista de productos.
+   */
   ngOnInit() {
     this.productService.getProducts().subscribe({
       next: (data) &#x3D;&gt; {

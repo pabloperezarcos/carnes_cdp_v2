@@ -19,10 +19,17 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product | undefined; // Producto actual
-  relatedProducts: Product[] = []; // Productos relacionados
-  loading = true; // Indicador de carga
-  quantity: number = 1; // Cantidad del producto a agregar al carrito
+  /** Producto actual */
+  product: Product | undefined;
+
+  /** Productos relacionados */
+  relatedProducts: Product[] = [];
+
+  /** Indicador de carga */
+  loading = true;
+
+  /** Cantidad del producto a agregar al carrito */
+  quantity: number = 1;
 
   /**
    * Constructor que inyecta las dependencias necesarias para obtener los detalles del producto y manejar el carrito.

@@ -153,16 +153,32 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   providers: [
+    // Proporciona detección de cambios de zona con coalescencia de eventos.
     provideZoneChangeDetection({ eventCoalescing: true }),
+
+    // Proporciona enrutamiento con las rutas definidas.
     provideRouter(routes),
+
+    // Proporciona un cliente HTTP con soporte para fetch.
     provideHttpClient(withFetch()),
+
+    // Importa los proveedores del módulo de formularios.
     importProvidersFrom(FormsModule),
+
+    // Proporciona la configuración de localización.
     { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; }
   ]
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuración de la aplicación.
+Proporciona configuraciones y proveedores necesarios para la aplicación Angular.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -186,6 +202,13 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Función de arranque de la aplicación.
+Inicializa la aplicación Angular utilizando la configuración especificada y el componente raíz.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -209,6 +232,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuración combinada de la aplicación para cliente y servidor.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -233,12 +262,19 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   providers: [
+    // Proveedor para la renderización en el servidor.
     provideServerRendering()
   ]
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuración específica para la renderización en el servidor.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>

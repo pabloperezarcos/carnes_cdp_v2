@@ -3,16 +3,35 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// Definición de la interfaz para los productos
+/**
+ * Representa un producto en el sistema.
+ */
 interface Product {
+  /** Identificador único del producto. */
   id: number;
+
+  /** Nombre del producto. */
   nombre: string;
+
+  /** Descripción corta del producto. */
   descripcionCorta: string;
+
+  /** Descripción completa del producto. */
   descripcion: string;
+
+  /** Precio del producto. */
   precio: number;
+
+  /** URL de la imagen del producto. */
   imagen: string;
+
+  /** Slug del producto para URLs amigables. */
   slug: string;
+
+  /** Código SKU del producto. */
   sku: string;
+
+  /** Estado del producto (e.g., disponible, agotado). */
   estado: string;
 }
 
@@ -28,12 +47,23 @@ interface Product {
   styleUrls: ['./admin-productos.component.scss']
 })
 export class AdminProductosComponent implements OnInit {
-  productos: Product[] = []; // Lista de todos los productos
-  filteredProductos: Product[] = []; // Lista de productos filtrados
-  selectedProduct: Product | null = null; // Producto seleccionado para editar
-  isEditing: boolean = false; // Indica si se está en modo edición
-  isAdding: boolean = false; // Indica si se está añadiendo un nuevo producto
-  searchQuery: string = ''; // Consulta de búsqueda para filtrar productos
+  /** Lista de todos los productos */
+  productos: Product[] = [];
+
+  /** Lista de productos filtrados */
+  filteredProductos: Product[] = [];
+
+  /** Producto seleccionado para editar */
+  selectedProduct: Product | null = null;
+
+  /** Indica si se está en modo edición */
+  isEditing: boolean = false;
+
+  /** Indica si se está añadiendo un nuevo producto */
+  isAdding: boolean = false;
+
+  /** Consulta de búsqueda para filtrar productos */
+  searchQuery: string = '';
 
   /**
    * Constructor que inyecta HttpClient para realizar solicitudes HTTP.

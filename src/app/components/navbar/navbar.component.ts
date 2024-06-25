@@ -17,15 +17,19 @@ import { AuthService } from '../../services/auth.service';
   imports: [CommonModule, FormsModule]
 })
 export class NavbarComponent implements OnInit {
-  // Query de búsqueda introducido por el usuario
+  /** Query de búsqueda introducido por el usuario */
   searchQuery: string = '';
-  // Contador de items en el carrito de compras
+
+  /** Contador de items en el carrito de compras */
   cartItemCount: number = 0;
-  // Estado de autenticación del usuario
+
+  /** Estado de autenticación del usuario */
   isLoggedIn: boolean = false;
-  // Si el usuario es administrador
+
+  /** Si el usuario es administrador */
   isAdmin: boolean = false;
-  // Información del usuario actual
+
+  /** Información del usuario actual */
   currentUser: any = null;
 
   /**

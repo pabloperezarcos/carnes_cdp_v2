@@ -5,9 +5,14 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-// Definición de la interfaz para los ítems del carrito
+/**
+ * Representa un ítem en el carrito de compras.
+ */
 interface CarritoItem {
+  /** El producto del ítem del carrito. */
   product: Product;
+
+  /** La cantidad del producto en el carrito. */
   quantity: number;
 }
 
@@ -23,11 +28,20 @@ interface CarritoItem {
   imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe]
 })
 export class CarritoComponent implements OnInit {
-  carritoItems: CarritoItem[] = []; // Lista de ítems en el carrito
-  total: number = 0; // Total del carrito
-  paymentMethod: string = ''; // Método de pago seleccionado
-  paymentMessage: string = ''; // Mensaje de estado del pago
-  isCartEmpty: boolean = true; // Indica si el carrito está vacío
+  /** Lista de ítems en el carrito */
+  carritoItems: CarritoItem[] = [];
+
+  /** Total del carrito */
+  total: number = 0;
+
+  /** Método de pago seleccionado */
+  paymentMethod: string = '';
+
+  /** Mensaje de estado del pago */
+  paymentMessage: string = '';
+
+  /** Indica si el carrito está vacío */
+  isCartEmpty: boolean = true;
 
   /**
    * Constructor que inyecta el servicio de carrito para gestionar los ítems del carrito.

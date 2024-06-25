@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Representa un usuario en el sistema.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -236,6 +243,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Dirección del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -269,6 +282,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Fecha de nacimiento del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -302,6 +321,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Correo electrónico del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -335,6 +360,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Identificador único del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -368,6 +399,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>URL de la imagen de perfil del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -401,6 +438,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre completo del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -434,6 +477,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Contraseña del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -467,6 +516,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Rol del usuario en el sistema (e.g., administrador, cliente).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -500,6 +555,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre de usuario (username) del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -512,18 +573,42 @@ import { AuthService } from &#x27;../../services/auth.service&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 
+/**
+ * Representa un usuario en el sistema.
+ */
 interface User {
+  /** Identificador único del usuario. */
   id: number;
+
+  /** Nombre completo del usuario. */
   nombre: string;
+
+  /** Nombre de usuario (username) del usuario. */
   username: string;
+
+  /** Correo electrónico del usuario. */
   email: string;
+
+  /** Contraseña del usuario. */
   password: string;
+
+  /** Fecha de nacimiento del usuario. */
   birthdate: string;
+
+  /** Dirección del usuario. */
   address: string;
+
+  /** Rol del usuario en el sistema (e.g., administrador, cliente). */
   rol: string;
+
+  /** URL de la imagen de perfil del usuario. */
   imagen: string;
 }
 
+/**
+ * PerfilComponent maneja la visualización y edición del perfil de usuario.
+ * Permite a los usuarios ver y actualizar su información de perfil.
+ */
 @Component({
   selector: &#x27;app-perfil&#x27;,
   standalone: true,
@@ -532,19 +617,36 @@ interface User {
   styleUrls: [&#x27;./perfil.component.scss&#x27;]
 })
 export class PerfilComponent implements OnInit {
+  /** Usuario actual */
   user: User | null &#x3D; null;
+
+  /** Indica si el modo de edición está activado */
   editMode: boolean &#x3D; false;
 
+  /**
+   * Constructor que inyecta el servicio de autenticación para obtener y actualizar el perfil de usuario.
+   * @param authService Servicio de autenticación para gestionar el perfil de usuario.
+   */
   constructor(private authService: AuthService) { }
 
+  /**
+   * Inicializa el componente obteniendo el usuario actual desde el servicio de autenticación.
+   */
   ngOnInit(): void {
     this.user &#x3D; this.authService.getCurrentUser();
   }
 
+  /**
+   * Alterna el modo de edición del perfil.
+   */
   toggleEditMode(): void {
     this.editMode &#x3D; !this.editMode;
   }
 
+  /**
+   * Guarda los cambios realizados en el perfil de usuario utilizando el servicio de autenticación.
+   * Desactiva el modo de edición después de guardar.
+   */
   saveProfile(): void {
     if (this.user) {
       this.authService.updateUserProfile(this.user);

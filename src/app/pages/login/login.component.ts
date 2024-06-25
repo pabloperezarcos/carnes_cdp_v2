@@ -16,9 +16,14 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class LoginComponent {
-  username: string = ''; // Nombre de usuario ingresado
-  password: string = ''; // Contraseña ingresada
-  errorMessage: string = ''; // Mensaje de error para mostrar en caso de fallo en el inicio de sesión
+  /** Nombre de usuario ingresado */
+  username: string = '';
+
+  /** Contraseña ingresada */
+  password: string = '';
+
+  /** Mensaje de error para mostrar en caso de fallo en el inicio de sesión */
+  errorMessage: string = '';
 
   /**
    * Constructor que inyecta los servicios de autenticación y enrutamiento.

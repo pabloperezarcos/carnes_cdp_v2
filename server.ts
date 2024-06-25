@@ -5,7 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
 
-// The Express app is exported so that it can be used by serverless Functions.
+/**
+ * Crea y configura la aplicación Express.
+ * @returns {express.Express} La aplicación Express configurada.
+ */
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
@@ -17,15 +20,16 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Example Express Rest API endpoints
+  // Ejemplo de endpoints de la API Rest de Express
   // server.get('/api/**', (req, res) => { });
-  // Serve static files from /browser
+
+  // Sirve archivos estáticos desde /browser
   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',
     index: 'index.html',
   }));
 
-  // All regular routes use the Angular engine
+  // Todas las rutas regulares usan el motor Angular
   server.get('**', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
@@ -44,14 +48,18 @@ export function app(): express.Express {
   return server;
 }
 
+/**
+ * Inicia el servidor Node.
+ */
 function run(): void {
   const port = process.env['PORT'] || 4000;
 
-  // Start up the Node server
+  // Inicia el servidor Node
   const server = app();
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
 
+// Ejecuta la función run para iniciar el servidor
 run();

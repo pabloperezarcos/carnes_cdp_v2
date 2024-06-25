@@ -5,11 +5,20 @@ import { Product } from '../../models/product.model';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-// Definición de la interfaz para los testimonios
+/**
+ * Representa un testimonio de un cliente.
+ */
 interface Testimonio {
+  /** Nombre del cliente que da el testimonio. */
   nombre: string;
+
+  /** Comentario del cliente sobre el producto o servicio. */
   comentario: string;
+
+  /** Número de estrellas que el cliente da al producto o servicio, típicamente entre 1 y 5. */
   estrellas: number;
+
+  /** URL de la imagen del cliente. */
   imagen: string;
 }
 
@@ -24,9 +33,14 @@ interface Testimonio {
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  productos: Product[] = []; // Lista de productos
-  loading = true; // Indicador de carga
-  testimonios: Testimonio[] = []; // Lista de testimonios
+  /** Lista de productos */
+  productos: Product[] = [];
+
+  /** Indicador de carga */
+  loading = true;
+
+  /** Lista de testimonios */
+  testimonios: Testimonio[] = [];
 
   /**
    * Constructor que inyecta el servicio de productos y el cliente HTTP.

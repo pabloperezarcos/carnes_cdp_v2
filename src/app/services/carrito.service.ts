@@ -3,8 +3,14 @@ import { Product } from '../models/product.model';
 import { BehaviorSubject } from 'rxjs';
 
 // Definición de la interfaz para los ítems del carrito
+/**
+ * Representa un ítem en el carrito de compras.
+ */
 interface CarritoItem {
+  /** El producto del ítem del carrito. */
   product: Product;
+
+  /** La cantidad del producto en el carrito. */
   quantity: number;
 }
 
@@ -15,9 +21,14 @@ interface CarritoItem {
   providedIn: 'root'
 })
 export class CarritoService {
-  private carritoItems: CarritoItem[] = []; // Lista de ítems en el carrito
-  private carritoSubject = new BehaviorSubject<CarritoItem[]>(this.carritoItems); // Sujeto para el estado del carrito
-  carritoActualizado = this.carritoSubject.asObservable(); // Observable para los cambios en el carrito
+  /** Lista de ítems en el carrito. */
+  private carritoItems: CarritoItem[] = [];
+
+  /** Sujeto para el estado del carrito. */
+  private carritoSubject = new BehaviorSubject<CarritoItem[]>(this.carritoItems);
+
+  /** Observable para los cambios en el carrito. */
+  carritoActualizado = this.carritoSubject.asObservable();
 
   /**
    * Constructor que carga el carrito desde el almacenamiento local.

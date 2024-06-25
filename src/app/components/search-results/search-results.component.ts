@@ -17,9 +17,10 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule]
 })
 export class SearchResultsComponent implements OnInit {
-  // El término de búsqueda ingresado por el usuario
+  /** El término de búsqueda ingresado por el usuario */
   query: string = '';
-  // Lista de productos que coinciden con la búsqueda
+
+  /** Lista de productos que coinciden con la búsqueda */
   results: Product[] = [];
 
   /**
