@@ -11,5 +11,5 @@ import { FooterComponent } from "./components/footer/footer.component";
     imports: [RouterOutlet, NavbarComponent, FooterComponent]
 })
 export class AppComponent {
-  title = 'Carnes CDP';
+  
 }

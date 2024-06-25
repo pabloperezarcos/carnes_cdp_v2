@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 interface User {
   id: number;
@@ -31,7 +32,7 @@ export class AdminUsuariosComponent implements OnInit {
   searchQuery: string = '';
   passwordFieldType: string = 'password';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadUsuarios();
@@ -41,6 +42,7 @@ export class AdminUsuariosComponent implements OnInit {
     this.http.get<{ usuarios: User[] }>('app/data/usuarios.json').subscribe(data => {
       this.usuarios = data.usuarios;
       this.filteredUsuarios = data.usuarios;
+      this.usuarios = this.authService.getAllUsers();
     });
   }
 
@@ -64,20 +66,21 @@ export class AdminUsuariosComponent implements OnInit {
 
   saveUser(): void {
     if (this.isAdding) {
-      this.usuarios.push(this.selectedUser!);
+      this.authService.addUser(this.selectedUser!);
     } else {
       const index = this.usuarios.findIndex(u => u.id === this.selectedUser!.id);
       if (index !== -1) {
         this.usuarios[index] = this.selectedUser!;
+        this.authService.updateUserProfile(this.selectedUser!);
       }
     }
-    this.filteredUsuarios = this.usuarios;
+    this.filteredUsuarios = [...this.usuarios];
     this.cancelEdit();
   }
 
   deleteUser(user: User): void {
     this.usuarios = this.usuarios.filter(u => u.id !== user.id);
-    this.filteredUsuarios = this.usuarios;
+    this.filteredUsuarios = [...this.usuarios];
   }
 
   cancelEdit(): void {

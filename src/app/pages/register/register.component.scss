@@ -60,3 +60,25 @@ $border-color: #dddddd;
         text-align: center;
     }
 }
+
+
+.btn-block {
+    width: 100%;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.end-0 {
+    right: 0;
+}
+
+.top-0 {
+    top: 50%;
+    transform: translateY(-50%);
+}

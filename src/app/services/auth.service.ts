@@ -105,12 +105,28 @@ export class AuthService {
     }
   }
 
+  addUser(newUser: User): void {
+    const usuarios = this.getUsersFromLocalStorage();
+    newUser.id = usuarios.length + 1; // Asignar un nuevo ID
+    usuarios.push(newUser);
+    this.saveUsersToLocalStorage(usuarios);
+  }
+
   private getUsersFromLocalStorage(): User[] {
-    const usuariosJson = localStorage.getItem('usuarios');
-    return usuariosJson ? JSON.parse(usuariosJson) : [];
+    if (this.isLocalStorageAvailable()) {
+      const usuariosJson = localStorage.getItem('usuarios');
+      return usuariosJson ? JSON.parse(usuariosJson) : [];
+    }
+    return [];
   }
 
   private saveUsersToLocalStorage(usuarios: User[]): void {
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+  }
+
+  getAllUsers(): User[] {
+    return this.getUsersFromLocalStorage();
   }
 }

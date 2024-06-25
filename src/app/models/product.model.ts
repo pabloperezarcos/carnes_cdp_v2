@@ -1,4 +1,3 @@
-// product.model.ts
 export class Product {
     nombre: string;
     descripcionCorta: string;
@@ -7,7 +6,6 @@ export class Product {
     imagen: string;
     slug: string;
     sku: string
-    /* estado: string oferta */
 
     constructor(
         nombre: string,

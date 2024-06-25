@@ -1,4 +1,3 @@
-// register.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -20,12 +19,32 @@ export class RegisterComponent {
   birthdate: string = '';
   address: string = '';
   errorMessage: string = '';
+  showPassword: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   onRegister(): void {
-    // Aquí debes implementar la lógica para registrar un nuevo usuario
-    // En este ejemplo, solo redirigimos al usuario a la página de inicio
-    this.router.navigate(['/']);
+    const newUser = {
+      id: 0,
+      nombre: this.nombre,
+      username: this.username,
+      email: this.email,
+      password: this.password,
+      birthdate: this.birthdate,
+      address: this.address,
+      rol: 'cliente',
+      imagen: '/assets/default-profile.png'
+    };
+
+    this.authService.addUser(newUser);
+    this.router.navigate(['/login']);
+  }
+
+  togglePasswordVisibility(inputId: string): void {
+    const input = document.getElementById(inputId) as HTMLInputElement;
+    if (input) {
+      input.type = input.type === 'password' ? 'text' : 'password';
+      this.showPassword = !this.showPassword;
+    }
   }
 }
