@@ -659,9 +659,9 @@ export class AdminUsuariosComponent implements OnInit {
    */
   loadUsuarios(): void {
     this.http.get&lt;{ usuarios: User[] }&gt;(&#x27;app/data/usuarios.json&#x27;).subscribe(data &#x3D;&gt; {
-      this.usuarios &#x3D; data.usuarios;
-      this.filteredUsuarios &#x3D; data.usuarios;
+      this.authService.setUsuarios(data.usuarios);
       this.usuarios &#x3D; this.authService.getAllUsers();
+      this.filteredUsuarios &#x3D; [...this.usuarios];
     });
   }
 
@@ -676,7 +676,7 @@ export class AdminUsuariosComponent implements OnInit {
         user.email.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     } else {
-      this.filteredUsuarios &#x3D; this.usuarios;
+      this.filteredUsuarios &#x3D; [...this.usuarios];
     }
   }
 
@@ -697,12 +697,9 @@ export class AdminUsuariosComponent implements OnInit {
     if (this.isAdding) {
       this.authService.addUser(this.selectedUser!);
     } else {
-      const index &#x3D; this.usuarios.findIndex(u &#x3D;&gt; u.id &#x3D;&#x3D;&#x3D; this.selectedUser!.id);
-      if (index !&#x3D;&#x3D; -1) {
-        this.usuarios[index] &#x3D; this.selectedUser!;
-        this.authService.updateUserProfile(this.selectedUser!);
-      }
+      this.authService.updateUserProfile(this.selectedUser!);
     }
+    this.usuarios &#x3D; this.authService.getAllUsers();
     this.filteredUsuarios &#x3D; [...this.usuarios];
     this.cancelEdit();
   }
@@ -712,7 +709,8 @@ export class AdminUsuariosComponent implements OnInit {
    * @param user Usuario a eliminar.
    */
   deleteUser(user: User): void {
-    this.usuarios &#x3D; this.usuarios.filter(u &#x3D;&gt; u.id !&#x3D;&#x3D; user.id);
+    this.authService.deleteUser(user);
+    this.usuarios &#x3D; this.authService.getAllUsers();
     this.filteredUsuarios &#x3D; [...this.usuarios];
   }
 

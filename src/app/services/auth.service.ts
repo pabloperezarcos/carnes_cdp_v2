@@ -49,6 +49,8 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   /** Sujeto para el usuario actual */
   private currentUserSubject = new BehaviorSubject<User | null>(null);
+  /** Lista de usuarios */
+  private usuarios: User[] = [];
 
   /** Observable para el estado de autenticación */
   isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
@@ -160,16 +162,12 @@ export class AuthService {
    * @param updatedUser Usuario actualizado.
    */
   updateUserProfile(updatedUser: User): void {
-    const currentUser = this.currentUserSubject.value;
-    if (currentUser) {
-      const usuarios = this.getUsersFromLocalStorage();
-      const userIndex = usuarios.findIndex(u => u.id === currentUser.id);
-      if (userIndex !== -1) {
-        usuarios[userIndex] = updatedUser;
-        this.currentUserSubject.next(updatedUser);
-        this.saveUsersToLocalStorage(usuarios);
-        this.saveUserToLocalStorage();
-      }
+    const userIndex = this.usuarios.findIndex(u => u.id === updatedUser.id);
+    if (userIndex !== -1) {
+      this.usuarios[userIndex] = updatedUser;
+      this.currentUserSubject.next(updatedUser);
+      this.saveUsersToLocalStorage(this.usuarios);
+      this.saveUserToLocalStorage();
     }
   }
 
@@ -178,10 +176,35 @@ export class AuthService {
    * @param newUser Nuevo usuario a añadir.
    */
   addUser(newUser: User): void {
-    const usuarios = this.getUsersFromLocalStorage();
-    newUser.id = usuarios.length + 1; // Asignar un nuevo ID
-    usuarios.push(newUser);
-    this.saveUsersToLocalStorage(usuarios);
+    newUser.id = this.usuarios.length + 1;
+    this.usuarios.push(newUser);
+    this.saveUsersToLocalStorage(this.usuarios);
+  }
+
+  /**
+   * Elimina un usuario.
+   * @param user Usuario a eliminar.
+   */
+  deleteUser(user: User): void {
+    this.usuarios = this.usuarios.filter(u => u.id !== user.id);
+    this.saveUsersToLocalStorage(this.usuarios);
+  }
+
+  /**
+   * Establece la lista de usuarios.
+   * @param usuarios Lista de usuarios a establecer.
+   */
+  setUsuarios(usuarios: User[]): void {
+    this.usuarios = usuarios;
+    this.saveUsersToLocalStorage(this.usuarios);
+  }
+
+  /**
+   * Obtiene todos los usuarios.
+   * @returns Lista de todos los usuarios.
+   */
+  getAllUsers(): User[] {
+    return this.usuarios;
   }
 
   /**
@@ -204,13 +227,5 @@ export class AuthService {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('usuarios', JSON.stringify(usuarios));
     }
-  }
-
-  /**
-   * Obtiene todos los usuarios.
-   * @returns Lista de todos los usuarios.
-   */
-  getAllUsers(): User[] {
-    return this.getUsersFromLocalStorage();
   }
 }
