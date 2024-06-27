@@ -11,7 +11,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class ProductService {
-  private dataUrl = 'app/data/productos.json'; 
+  /** URL para obtener los datos de productos */
+  private dataUrl = 'app/data/productos.json';
 
   /**
    * Constructor que inyecta el cliente HTTP para realizar solicitudes.
