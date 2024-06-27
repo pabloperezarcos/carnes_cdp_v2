@@ -43,12 +43,17 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'app/data/usuarios.json'; // URL para obtener los datos de usuarios
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false); // Sujeto para el estado de autenticación
-  private currentUserSubject = new BehaviorSubject<User | null>(null); // Sujeto para el usuario actual
+  /** URL para obtener los datos de usuarios */
+  private apiUrl = 'app/data/usuarios.json';
+  /** Sujeto para el estado de autenticación */
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  /** Sujeto para el usuario actual */
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
 
-  isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable(); // Observable para el estado de autenticación
-  currentUser$: Observable<User | null> = this.currentUserSubject.asObservable(); // Observable para el usuario actual
+  /** Observable para el estado de autenticación */
+  isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
+  /** Observable para el usuario actual */
+  currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
 
   /**
    * Constructor que inyecta el cliente HTTP y el identificador de plataforma.
@@ -56,7 +61,6 @@ export class AuthService {
    * @param platformId Identificador de plataforma para verificar si es un navegador.
    */
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: any) {
-    // Cargar usuario desde el almacenamiento local al inicializar el servicio
     this.loadUserFromLocalStorage();
   }
 
@@ -103,10 +107,8 @@ export class AuthService {
       map(response => {
         const user = response.usuarios.find(u => u.username === username && u.password === password);
         if (user) {
-          // Actualiza el estado de autenticación y el usuario actual
           this.isAuthenticatedSubject.next(true);
           this.currentUserSubject.next(user);
-          // Guarda el usuario en el almacenamiento local
           this.saveUserToLocalStorage();
           return true;
         } else {
@@ -120,10 +122,8 @@ export class AuthService {
    * Realiza el cierre de sesión del usuario actual.
    */
   logout(): void {
-    // Actualiza el estado de autenticación y limpia el usuario actual
     this.isAuthenticatedSubject.next(false);
     this.currentUserSubject.next(null);
-    // Limpia el almacenamiento local
     if (this.isLocalStorageAvailable()) {
       localStorage.removeItem('currentUser');
       localStorage.removeItem('isAuthenticated');
