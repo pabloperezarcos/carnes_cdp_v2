@@ -30,7 +30,7 @@ interface Testimonio {
   standalone: true,
   imports: [NgIf, NgFor, CommonModule, RouterModule, CurrencyPipe],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   /** Lista de productos */
@@ -41,6 +41,9 @@ export class HomeComponent implements OnInit {
 
   /** Lista de testimonios */
   testimonios: Testimonio[] = [];
+
+  /** URL del archivo JSON de testimonios en Firebase Storage */
+  private testimoniosUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdp.appspot.com/o/testimonios.json?alt=media&token=2e8976ca-8baf-42c9-8990-103d7bf8b89d';
 
   /**
    * Constructor que inyecta el servicio de productos y el cliente HTTP.
@@ -53,16 +56,24 @@ export class HomeComponent implements OnInit {
    * Inicializa el componente cargando la lista de productos y testimonios.
    */
   ngOnInit() {
-    this.http.get<{ testimonios: Testimonio[] }>('app/data/testimonios.json').subscribe(data => {
-      this.testimonios = data.testimonios;
+    this.http.get<{ testimonios: Testimonio[] }>(this.testimoniosUrl).subscribe({
+      next: (data) => {
+        console.log('Testimonios obtenidos:', data.testimonios); // Agregar este log
+        this.testimonios = data.testimonios;
+      },
+      error: (err) => {
+        console.error('Error obteniendo testimonios:', err);
+      }
     });
+
     this.productService.getProducts().subscribe({
       next: (data) => {
+        console.log('Productos obtenidos:', data); // Agregar este log
         this.productos = data.slice(0, 3);
         this.loading = false;
       },
       error: (err) => {
-        console.error(err);
+        console.error('Error obteniendo productos:', err);
         this.loading = false;
       },
       complete: () => console.log('Carga de productos completa')
