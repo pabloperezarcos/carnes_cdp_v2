@@ -1,3 +1,4 @@
+// src/app/services/product.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,8 +12,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class ProductService {
-  /** URL para obtener los datos de productos */
-  private dataUrl = 'app/data/productos.json';
+  /** URL para obtener los datos de productos desde Firebase Storage */
+  private dataUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdp.appspot.com/o/productos.json?alt=media&token=35c23782-1f1c-48b2-a7df-3357c2baa54e';
 
   /**
    * Constructor que inyecta el cliente HTTP para realizar solicitudes.
@@ -21,7 +22,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   /**
-   * Obtiene la lista de productos desde el archivo JSON.
+   * Obtiene la lista de productos desde el archivo JSON en Firebase Storage.
    * @returns Observable que emite una lista de productos.
    */
   getProducts(): Observable<Product[]> {
