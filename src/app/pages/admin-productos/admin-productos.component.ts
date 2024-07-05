@@ -15,14 +15,21 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./admin-productos.component.scss'] // Rutas a los archivos de estilos SCSS aplicados al componente
 })
 export class AdminProductosComponent implements OnInit {
-  productos: Product[] = []; // Array que contiene todos los productos
-  filteredProductos: Product[] = []; // Array de productos filtrados
-  selectedProduct: Product | null = null; // Producto seleccionado para edición o visualización
-  isEditing: boolean = false; // Indica si se está editando un producto
-  isAdding: boolean = false; // Indica si se está añadiendo un nuevo producto
-  searchQuery: string = ''; // Consulta de búsqueda para filtrar productos
+  /** Array que contiene todos los productos. */
+  productos: Product[] = [];
+  /** Array de productos filtrados. */
+  filteredProductos: Product[] = [];
+  /** Producto seleccionado para edición o visualización. */
+  selectedProduct: Product | null = null;
+  /** Indica si se está editando un producto. */
+  isEditing: boolean = false;
+  /** Indica si se está añadiendo un nuevo producto. */
+  isAdding: boolean = false;
+  /** Consulta de búsqueda para filtrar productos. */
+  searchQuery: string = '';
 
-  private productService = inject(ProductService); // Servicio para manejar operaciones de productos
+  /** Servicio para manejar operaciones de productos. */
+  private productService = inject(ProductService);
 
   /**
    * Método del ciclo de vida de Angular que se ejecuta al inicializar el componente.
@@ -69,7 +76,7 @@ export class AdminProductosComponent implements OnInit {
 
   /**
    * Selecciona un producto para editar o visualizar.
-   * @param product Producto seleccionado
+   * @param product Producto seleccionado.
    */
   selectProduct(product: Product): void {
     this.selectedProduct = { ...product }; // Clona el producto seleccionado para evitar modificar el original accidentalmente
@@ -96,7 +103,7 @@ export class AdminProductosComponent implements OnInit {
 
   /**
    * Elimina un producto.
-   * @param product Producto a eliminar
+   * @param product Producto a eliminar.
    */
   deleteProduct(product: Product): void {
     const productId = product.id!;
