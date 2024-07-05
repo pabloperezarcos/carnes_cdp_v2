@@ -13,7 +13,7 @@ import { ProductService } from '../../services/product.service';
   standalone: true,
   imports: [NgFor, CommonModule, RouterModule, CurrencyPipe],
   templateUrl: './catalogo.component.html',
-  styleUrl: './catalogo.component.scss'
+  styleUrls: ['./catalogo.component.scss']
 })
 export class CatalogoComponent implements OnInit {
   /** Lista de productos */
@@ -32,13 +32,21 @@ export class CatalogoComponent implements OnInit {
    * Inicializa el componente cargando la lista de productos.
    */
   ngOnInit() {
-    this.productService.getProducts().subscribe({
+    this.loadProductos();
+  }
+
+  /**
+   * Carga la lista de productos desde el servicio.
+   */
+  private loadProductos(): void {
+    this.productService.getProductsFromJson().subscribe({
       next: (data) => {
+        console.log('Productos obtenidos:', data); // Log para depuración
         this.productos = data;
         this.loading = false;
       },
       error: (err) => {
-        console.error(err);
+        console.error('Error obteniendo productos:', err);
         this.loading = false;
       },
       complete: () => console.log('Carga de productos completa')

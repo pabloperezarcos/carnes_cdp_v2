@@ -51,13 +51,15 @@ export class ProductDetailComponent implements OnInit {
       switchMap((params: ParamMap) => {
         const sku = params.get('sku');
         this.loading = true;
-        return this.productService.getProducts();
+        return this.productService.getProductsFromJson(); // Cambiado para cargar productos desde JSON
       })
     ).subscribe({
       next: (data) => {
         const sku = this.route.snapshot.paramMap.get('sku');
         this.product = data.find(p => p.sku === sku);
         this.relatedProducts = data.filter(p => p.sku !== sku).slice(0, 3);
+        console.log('Producto actual:', this.product);
+        console.log('Productos relacionados:', this.relatedProducts);
         this.loading = false;
       },
       error: (err) => {

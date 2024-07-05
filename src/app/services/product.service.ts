@@ -1,71 +1,67 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Firestore, collection, collectionData, doc, setDoc, deleteDoc, updateDoc } from '@angular/fire/firestore';
+import { from, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private dataUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/productos.json?alt=media&token=6808db40-2409-4d80-bd8a-a4dc0dfba038';
-  private storagePath = 'productos.json';
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient) { }
+  private jsonUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/productos.json?alt=media&token=7e185c71-ea77-4bcf-b557-48ba39e08ab6';
+
+  constructor(private firestore: Firestore, private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<{ productos: Product[] }>(this.dataUrl).pipe(
-      map(response => response.productos)
+    const productsRef = collection(this.firestore, 'productos');
+    return collectionData(productsRef, { idField: 'id' }) as Observable<Product[]>;
+  }
+
+  addProduct(product: Product): Observable<void> {
+    const productsRef = collection(this.firestore, 'productos');
+    const newDocRef = doc(productsRef);
+    return from(setDoc(newDocRef, { ...product })) as Observable<void>;
+  }
+
+  updateProduct(id: string, product: Product): Observable<void> {
+    const productDoc = doc(this.firestore, `productos/${id}`);
+    return from(updateDoc(productDoc, { ...product })) as Observable<void>;
+  }
+
+  deleteProduct(id: string): Observable<void> {
+    const productDoc = doc(this.firestore, `productos/${id}`);
+    return from(deleteDoc(productDoc)) as Observable<void>;
+  }
+
+  getProductsFromJson(): Observable<Product[]> {
+    return this.http.get<{ productos: Product[] }>(this.jsonUrl).pipe(
+      tap(response => console.log('JSON response:', response)), // Verificar respuesta
+      map(response => response.productos),
+      tap(products => console.log('Mapped products:', products)) // Verificar productos mapeados
     );
   }
 
-  searchProducts(query: string): Observable<Product[]> {
+  loadProductsToFirestore(): Observable<void> {
+    return this.getProductsFromJson().pipe(
+      map(products => {
+        products.forEach(product => {
+          const productsRef = collection(this.firestore, 'productos');
+          const newDocRef = doc(productsRef);
+          setDoc(newDocRef, { ...product });
+        });
+        return;
+      })
+    );
+  }
+
+  searchProducts(queryStr: string): Observable<Product[]> {
     return this.getProducts().pipe(
       map(products => products.filter(product =>
-        product.nombre.toLowerCase().includes(query.toLowerCase()) ||
-        product.descripcion.toLowerCase().includes(query.toLowerCase())
+        product.nombre.toLowerCase().includes(queryStr.toLowerCase()) ||
+        product.descripcion.toLowerCase().includes(queryStr.toLowerCase())
       ))
-    );
-  }
-
-  addProduct(newProduct: Product): Observable<void> {
-    return this.getProducts().pipe(
-      switchMap(products => {
-        newProduct.id = products.length + 1;
-        products.push(newProduct);
-        return this.updateProducts(products);
-      })
-    );
-  }
-
-  updateProduct(updatedProduct: Product): Observable<void> {
-    return this.getProducts().pipe(
-      switchMap(products => {
-        const index = products.findIndex(p => p.id === updatedProduct.id);
-        if (index !== -1) {
-          products[index] = updatedProduct;
-        }
-        return this.updateProducts(products);
-      })
-    );
-  }
-
-  deleteProduct(id: number): Observable<void> {
-    return this.getProducts().pipe(
-      switchMap(products => {
-        const updatedProducts = products.filter(p => p.id !== id);
-        return this.updateProducts(updatedProducts);
-      })
-    );
-  }
-
-  private updateProducts(products: Product[]): Observable<void> {
-    const productsJson = JSON.stringify({ productos: products });
-
-    // Upload the updated JSON to Firebase Storage
-    return from(this.http.put(this.dataUrl, productsJson, { headers: this.headers })).pipe(
-      switchMap(() => this.http.get<void>(this.dataUrl))
     );
   }
 }

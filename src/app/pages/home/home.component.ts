@@ -56,6 +56,14 @@ export class HomeComponent implements OnInit {
    * Inicializa el componente cargando la lista de productos y testimonios.
    */
   ngOnInit() {
+    this.loadTestimonios();
+    this.loadProductosFromJson(); // Cambiado para cargar productos desde JSON
+  }
+
+  /**
+   * Carga la lista de testimonios desde el JSON.
+   */
+  private loadTestimonios(): void {
     this.http.get<{ testimonios: Testimonio[] }>(this.testimoniosUrl).subscribe({
       next: (data) => {
         console.log('Testimonios obtenidos:', data.testimonios); // Agregar este log
@@ -65,8 +73,13 @@ export class HomeComponent implements OnInit {
         console.error('Error obteniendo testimonios:', err);
       }
     });
+  }
 
-    this.productService.getProducts().subscribe({
+  /**
+   * Carga la lista de productos desde el JSON.
+   */
+  private loadProductosFromJson(): void {
+    this.productService.getProductsFromJson().subscribe({
       next: (data) => {
         console.log('Productos obtenidos:', data); // Agregar este log
         this.productos = data.slice(0, 3);

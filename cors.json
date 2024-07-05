@@ -8,7 +8,8 @@
             "HEAD",
             "PUT",
             "POST",
-            "DELETE"
+            "DELETE",
+            "OPTIONS"
         ],
         "maxAgeSeconds": 3600,
         "responseHeader": [

@@ -70,13 +70,6 @@
                 <label for="sku" class="form-label">SKU</label>
                 <input type="text" class="form-control" id="sku" [(ngModel)]="selectedProduct!.sku" name="sku" required>
             </div>
-            <div class="mb-3">
-                <label for="estado" class="form-label">Estado</label>
-                <select class="form-select" id="estado" [(ngModel)]="selectedProduct!.estado" name="estado" required>
-                    <option value="disponible">Disponible</option>
-                    <option value="agotado">Agotado</option>
-                </select>
-            </div>
             <button type="submit" class="btn btn-success me-2">{{ isAdding ? 'Agregar' : 'Guardar' }}</button>
             <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
         </form>
