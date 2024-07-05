@@ -13,8 +13,14 @@ import { map, tap } from 'rxjs/operators';
 })
 export class ProductService {
 
+  /** URL del archivo JSON con los datos de los productos. */
   private jsonUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/productos.json?alt=media&token=7e185c71-ea77-4bcf-b557-48ba39e08ab6';
 
+  /**
+   * Constructor del servicio ProductService.
+   * @param firestore Servicio Firestore para realizar operaciones en la base de datos.
+   * @param http Servicio HttpClient para realizar solicitudes HTTP.
+   */
   constructor(private firestore: Firestore, private http: HttpClient) { }
 
   /**
