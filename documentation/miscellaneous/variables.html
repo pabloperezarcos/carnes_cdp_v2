@@ -156,17 +156,34 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   providers: [
+    // Proveedor para configurar las rutas de la aplicación
     provideRouter(routes),
+
+    // Proveedor para configurar el cliente HTTP con Fetch y interceptores
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
+
+    // Importar proveedores desde FormsModule para su uso en la aplicación
     importProvidersFrom(FormsModule),
+
+    // Proveedor para configurar el LOCALE_ID con &#x27;es-CL&#x27; (español de Chile)
     { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; },
+
+    // Proveedor para inicializar la aplicación Firebase
     provideFirebaseApp(() &#x3D;&gt; initializeApp(environment.firebase)),
+
+    // Proveedor para obtener y proporcionar Firestore de Firebase
     provideFirestore(() &#x3D;&gt; getFirestore()),
   ]
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuración de la aplicación Angular, incluyendo proveedores de servicios.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -289,27 +306,44 @@ Inicializa la aplicación Angular utilizando la configuración especificada y el
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
+    /**
+     * Indica si la aplicación está en producción.
+     * @type {boolean}
+     */
     production: false,
+
+    /**
+     * Configuración de Firebase para la integración con la aplicación.
+     * Contiene las credenciales y configuraciones necesarias para Firebase.
+     * @type {{ 
+     *   apiKey: string,
+     *   authDomain: string,
+     *   projectId: string,
+     *   storageBucket: string,
+     *   messagingSenderId: string,
+     *   appId: string,
+     *   measurementId: string
+     * }}
+     */
     firebase: {
         apiKey: &quot;AIzaSyBpHDL7bQ3XPTOtaClNjAjZyFtYwcl_gaY&quot;,
-
         authDomain: &quot;carnescdpv2.firebaseapp.com&quot;,
-
         projectId: &quot;carnescdpv2&quot;,
-
         storageBucket: &quot;carnescdpv2.appspot.com&quot;,
-
         messagingSenderId: &quot;432247060096&quot;,
-
         appId: &quot;1:432247060096:web:840b61645de89b485e1865&quot;,
-
         measurementId: &quot;G-X8NZ26BBRL&quot;
-
     }
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuración del entorno para la aplicación.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>

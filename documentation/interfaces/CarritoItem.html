@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interfaz que define la estructura de un item en el carrito.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -238,24 +245,34 @@
 import { Product } from &#x27;../models/product.model&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
+/**
+ * Interfaz que define la estructura de un item en el carrito.
+ */
 interface CarritoItem {
-  product: Product;
-  quantity: number;
+  product: Product; // Producto en el carrito
+  quantity: number; // Cantidad del producto en el carrito
 }
 
+/**
+ * Servicio para gestionar el carrito de compras.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class CarritoService {
-  private carritoItems: CarritoItem[] &#x3D; [];
-  private carritoSubject &#x3D; new BehaviorSubject&lt;CarritoItem[]&gt;(this.carritoItems);
-  carritoActualizado &#x3D; this.carritoSubject.asObservable();
-  private purchasedItems: CarritoItem[] &#x3D; [];
+  private carritoItems: CarritoItem[] &#x3D; []; // Array que contiene los items del carrito
+  private carritoSubject &#x3D; new BehaviorSubject&lt;CarritoItem[]&gt;(this.carritoItems); // Sujeto BehaviorSubject para notificar cambios en el carrito
+  carritoActualizado &#x3D; this.carritoSubject.asObservable(); // Observable para suscribirse a cambios en el carrito
+  private purchasedItems: CarritoItem[] &#x3D; []; // Array que contiene los items comprados
 
   constructor() {
-    this.loadCarrito();
+    this.loadCarrito(); // Cargar el carrito almacenado al inicializar el servicio
   }
 
+  /**
+   * Guarda el estado actual del carrito en el almacenamiento local.
+   * Actualiza el BehaviorSubject para reflejar los cambios.
+   */
   private saveCarrito(): void {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem(&#x27;carrito&#x27;, JSON.stringify(this.carritoItems));
@@ -263,6 +280,10 @@ export class CarritoService {
     }
   }
 
+  /**
+   * Carga el carrito almacenado desde el almacenamiento local al iniciar el servicio.
+   * Actualiza el BehaviorSubject para reflejar los items cargados.
+   */
   private loadCarrito(): void {
     if (this.isLocalStorageAvailable()) {
       const carritoSaved &#x3D; localStorage.getItem(&#x27;carrito&#x27;);
@@ -273,6 +294,10 @@ export class CarritoService {
     }
   }
 
+  /**
+   * Verifica si el almacenamiento local está disponible.
+   * @returns &#x60;true&#x60; si el almacenamiento local está disponible, &#x60;false&#x60; de lo contrario.
+   */
   private isLocalStorageAvailable(): boolean {
     try {
       const testKey &#x3D; &#x27;__test__&#x27;;
@@ -284,14 +309,28 @@ export class CarritoService {
     }
   }
 
+  /**
+   * Obtiene todos los items del carrito actualmente.
+   * @returns Un array de objetos &#x60;CarritoItem&#x60; que representan los items en el carrito.
+   */
   getCarritoItems(): CarritoItem[] {
     return this.carritoItems;
   }
 
+  /**
+   * Obtiene el número total de items en el carrito.
+   * @returns El número total de items en el carrito.
+   */
   getItemCount(): number {
     return this.carritoItems.reduce((sum, item) &#x3D;&gt; sum + item.quantity, 0);
   }
 
+  /**
+   * Agrega un producto al carrito.
+   * Si el producto ya existe en el carrito, aumenta la cantidad; de lo contrario, lo agrega como nuevo.
+   * @param product El producto a agregar al carrito.
+   * @param quantity La cantidad del producto a agregar.
+   */
   addToCarrito(product: Product, quantity: number): void {
     const existingProduct &#x3D; this.carritoItems.find(item &#x3D;&gt; item.product.sku &#x3D;&#x3D;&#x3D; product.sku);
     if (existingProduct) {
@@ -302,11 +341,20 @@ export class CarritoService {
     this.saveCarrito();
   }
 
+  /**
+   * Elimina un producto del carrito.
+   * @param product El producto a eliminar del carrito.
+   */
   removeFromCarrito(product: Product): void {
     this.carritoItems &#x3D; this.carritoItems.filter(item &#x3D;&gt; item.product.sku !&#x3D;&#x3D; product.sku);
     this.saveCarrito();
   }
 
+  /**
+   * Actualiza la cantidad de un producto en el carrito.
+   * @param product El producto cuya cantidad se actualizará.
+   * @param quantity La nueva cantidad del producto.
+   */
   updateQuantity(product: Product, quantity: number): void {
     const existingItem &#x3D; this.carritoItems.find(item &#x3D;&gt; item.product.sku &#x3D;&#x3D;&#x3D; product.sku);
     if (existingItem) {
@@ -315,15 +363,26 @@ export class CarritoService {
     this.saveCarrito();
   }
 
+  /**
+   * Vacía completamente el carrito, eliminando todos los items.
+   */
   clearCarrito(): void {
     this.carritoItems &#x3D; [];
     this.saveCarrito();
   }
 
+  /**
+   * Guarda los items del carrito como items comprados.
+   * Esto puede ser útil para realizar un seguimiento de las compras completadas.
+   */
   savePurchasedItems(): void {
     this.purchasedItems &#x3D; [...this.carritoItems];
   }
 
+  /**
+   * Obtiene los items que han sido marcados como comprados.
+   * @returns Un array de objetos &#x60;CarritoItem&#x60; que representan los items comprados.
+   */
   getPurchasedItems(): CarritoItem[] {
     return this.purchasedItems;
   }

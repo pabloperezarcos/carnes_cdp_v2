@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente que muestra los resultados de búsqueda de productos.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -250,12 +257,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/search-results/search-results.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/search-results/search-results.component.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -264,6 +273,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +288,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para acceder a los parámetros de la URL.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>productService</td>
@@ -290,6 +304,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para realizar la búsqueda de productos.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -329,14 +347,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:36</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método que se ejecuta al inicializar el componente.
+Suscribe el componente a los cambios en los parámetros de la URL y realiza la búsqueda inicial.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -366,14 +387,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/components/search-results/search-results.component.ts:47</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Realiza la búsqueda de productos basados en el término de búsqueda almacenado en <code>query</code>.
+Actualiza <code>results</code> con los productos encontrados.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -413,10 +437,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/search-results/search-results.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/search-results/search-results.component.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Término de búsqueda proporcionado en los parámetros de la URL.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -444,10 +474,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/search-results/search-results.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/search-results/search-results.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Arreglo de productos que contiene los resultados de la búsqueda.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -464,6 +500,9 @@ import { Product } from &#x27;../../models/product.model&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
 
+/**
+ * Componente que muestra los resultados de búsqueda de productos.
+ */
 @Component({
   selector: &#x27;app-search-results&#x27;,
   templateUrl: &#x27;./search-results.component.html&#x27;,
@@ -472,11 +511,23 @@ import { RouterModule } from &#x27;@angular/router&#x27;;
   imports: [CommonModule, RouterModule]
 })
 export class SearchResultsComponent implements OnInit {
+  /** Término de búsqueda proporcionado en los parámetros de la URL. */
   query: string &#x3D; &#x27;&#x27;;
+
+  /** Arreglo de productos que contiene los resultados de la búsqueda. */
   results: Product[] &#x3D; [];
 
+  /**
+   * Constructor del componente.
+   * @param route Servicio para acceder a los parámetros de la URL.
+   * @param productService Servicio para realizar la búsqueda de productos.
+   */
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Suscribe el componente a los cambios en los parámetros de la URL y realiza la búsqueda inicial.
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe(params &#x3D;&gt; {
       this.query &#x3D; params[&#x27;query&#x27;];
@@ -484,6 +535,10 @@ export class SearchResultsComponent implements OnInit {
     });
   }
 
+  /**
+   * Realiza la búsqueda de productos basados en el término de búsqueda almacenado en &#x60;query&#x60;.
+   * Actualiza &#x60;results&#x60; con los productos encontrados.
+   */
   searchProducts(): void {
     if (this.query) {
       this.productService.searchProducts(this.query).subscribe(products &#x3D;&gt; {
