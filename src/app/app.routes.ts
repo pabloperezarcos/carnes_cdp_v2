@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.component';
 import { AdminProductosComponent } from './pages/admin-productos/admin-productos.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 
 
@@ -24,6 +25,7 @@ export const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent},
     { path: 'admin/usuarios', component: AdminUsuariosComponent},
     { path: 'admin/productos', component: AdminProductosComponent},
-    { path: 'mi-perfil', component: PerfilComponent}
+    { path: 'mi-perfil', component: PerfilComponent},
+    { path: 'checkout', component: CheckoutComponent}
 
 ];

@@ -130,7 +130,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Representa un ítem en el carrito de compras.</p>
+                <p>Interfaz que define la estructura de un item en el carrito de compras.</p>
 
             </p>
 
@@ -184,7 +184,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>product:         <code><a href="../interfaces/Product.html" target="_self" >Product</a></code>
+                                        <code>product:         <code><a href="../classes/Product.html" target="_self" >Product</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -192,7 +192,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/Product.html" target="_self" >Product</a></code>
+                                            <i>Type : </i>        <code><a href="../classes/Product.html" target="_self" >Product</a></code>
 
                                         </td>
                                     </tr>
@@ -203,7 +203,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>El producto del ítem del carrito.</p>
+                                    <div class="io-description"><p>Producto en el carrito.</p>
 </div>
                                 </td>
                             </tr>
@@ -242,7 +242,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>La cantidad del producto en el carrito.</p>
+                                    <div class="io-description"><p>Cantidad del producto en el carrito.</p>
 </div>
                                 </td>
                             </tr>
@@ -258,54 +258,50 @@ import { CarritoService } from &#x27;../../services/carrito.service&#x27;;
 import { Product } from &#x27;../../models/product.model&#x27;;
 import { CommonModule, CurrencyPipe } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
-import { RouterModule } from &#x27;@angular/router&#x27;;
+import { RouterModule, Router } from &#x27;@angular/router&#x27;;
 
 /**
- * Representa un ítem en el carrito de compras.
+ * Interfaz que define la estructura de un item en el carrito de compras.
  */
 interface CarritoItem {
-  /** El producto del ítem del carrito. */
+  /** Producto en el carrito. */
   product: Product;
-
-  /** La cantidad del producto en el carrito. */
+  /** Cantidad del producto en el carrito. */
   quantity: number;
 }
 
 /**
- * CarritoComponent maneja la visualización y lógica del carrito de compras.
- * Permite agregar, actualizar y eliminar productos, así como proceder al pago.
+ * Componente que gestiona el carrito de compras.
  */
 @Component({
   selector: &#x27;app-carrito&#x27;,
   templateUrl: &#x27;./carrito.component.html&#x27;,
   styleUrls: [&#x27;./carrito.component.scss&#x27;],
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe]
+  standalone: true, // Indica que este componente no tiene dependencias específicas
+  imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe] // Módulos importados necesarios para el componente
 })
 export class CarritoComponent implements OnInit {
-  /** Lista de ítems en el carrito */
+  /** Array que contiene los items del carrito. */
   carritoItems: CarritoItem[] &#x3D; [];
-
-  /** Total del carrito */
+  /** Total de la compra. */
   total: number &#x3D; 0;
-
-  /** Método de pago seleccionado */
+  /** Método de pago seleccionado. */
   paymentMethod: string &#x3D; &#x27;&#x27;;
-
-  /** Mensaje de estado del pago */
+  /** Mensaje de estado del pago. */
   paymentMessage: string &#x3D; &#x27;&#x27;;
-
-  /** Indica si el carrito está vacío */
+  /** Indica si el carrito está vacío. */
   isCartEmpty: boolean &#x3D; true;
 
   /**
-   * Constructor que inyecta el servicio de carrito para gestionar los ítems del carrito.
-   * @param carritoService Servicio que proporciona operaciones relacionadas con el carrito de compras.
+   * Constructor del componente CarritoComponent.
+   * @param carritoService Servicio para gestionar el carrito de compras.
+   * @param router Servicio de enrutamiento de Angular.
    */
-  constructor(private carritoService: CarritoService) { }
+  constructor(private carritoService: CarritoService, private router: Router) { }
 
   /**
-   * Inicializa el componente cargando los ítems del carrito y calculando el total.
+   * Método del ciclo de vida de Angular que se ejecuta al inicializar el componente.
+   * Carga los items del carrito y verifica si está vacío.
    */
   ngOnInit(): void {
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
@@ -314,15 +310,15 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * Calcula el total del carrito sumando los precios de los productos por sus cantidades.
+   * Calcula el total de la compra sumando el precio de cada item multiplicado por su cantidad.
    */
   calculateTotal(): void {
     this.total &#x3D; this.carritoItems.reduce((sum, item) &#x3D;&gt; sum + (item.product?.precio ?? 0) * (item.quantity ?? 0), 0);
   }
 
   /**
-   * Elimina un ítem del carrito basado en su índice y actualiza el total y el estado del carrito.
-   * @param index Índice del ítem a eliminar.
+   * Remueve un item del carrito según su índice.
+   * @param index Índice del item a remover.
    */
   removeItem(index: number): void {
     this.carritoService.removeFromCarrito(this.carritoItems[index].product);
@@ -332,9 +328,9 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * Actualiza la cantidad de un ítem en el carrito y recalcula el total.
-   * @param index Índice del ítem a actualizar.
-   * @param quantity Nueva cantidad del ítem.
+   * Actualiza la cantidad de un producto en el carrito.
+   * @param index Índice del item en el carrito.
+   * @param quantity Nueva cantidad del producto.
    */
   updateQuantity(index: number, quantity: number): void {
     this.carritoService.updateQuantity(this.carritoItems[index].product, quantity);
@@ -343,14 +339,15 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * Verifica si el carrito está vacío y actualiza el estado correspondiente.
+   * Verifica si el carrito está vacío.
    */
   checkIfCartIsEmpty(): void {
     this.isCartEmpty &#x3D; this.carritoItems.length &#x3D;&#x3D;&#x3D; 0;
   }
 
   /**
-   * Procede al pago, mostrando mensajes según el estado del proceso de pago.
+   * Procesa el pago de los productos en el carrito.
+   * Valida el método de pago seleccionado y realiza la acción correspondiente.
    */
   procederAlPago(): void {
     if (!this.paymentMethod) {
@@ -361,8 +358,25 @@ export class CarritoComponent implements OnInit {
     this.paymentMessage &#x3D; &#x60;Accediendo a Plataforma ${this.paymentMethod}...&#x60;;
 
     setTimeout(() &#x3D;&gt; {
-      this.paymentMessage &#x3D; &#x27;Pago Exitoso&#x27;;
-    }, 3000);
+      this.paymentMessage &#x3D; &#x27;Pago Exitoso, estás siendo redireccionado al checkout...&#x27;;
+      this.carritoService.savePurchasedItems();
+
+      setTimeout(() &#x3D;&gt; {
+        this.limpiarCarrito();
+        this.router.navigate([&#x27;/checkout&#x27;]);
+      }, 4000);  // Esperar 4 segundos antes de redireccionar
+    }, 3000);  // Esperar 3 segundos antes de mostrar el mensaje de pago exitoso
+  }
+
+  /**
+   * Limpia el carrito de compras.
+   * Remueve todos los items del carrito y actualiza el total.
+   */
+  limpiarCarrito(): void {
+    this.carritoService.clearCarrito();
+    this.carritoItems &#x3D; [];
+    this.calculateTotal();
+    this.checkIfCartIsEmpty();
   }
 }
 </code></pre>

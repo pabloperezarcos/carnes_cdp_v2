@@ -123,7 +123,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>ProductService gestiona las operaciones relacionadas con los productos, incluyendo la obtención y búsqueda de productos.</p>
+                <p>Servicio para la gestión de productos, incluyendo operaciones CRUD y carga desde JSON.</p>
 
             </p>
 
@@ -143,7 +143,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#dataUrl" >dataUrl</a>
+                                <a href="#jsonUrl" >jsonUrl</a>
                             </li>
                         </ul>
                     </td>
@@ -158,10 +158,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#addProduct" >addProduct</a>
+                            </li>
+                            <li>
+                                <a href="#deleteProduct" >deleteProduct</a>
+                            </li>
+                            <li>
                                 <a href="#getProducts" >getProducts</a>
                             </li>
                             <li>
+                                <a href="#getProductsFromJson" >getProductsFromJson</a>
+                            </li>
+                            <li>
+                                <a href="#loadProductsToFirestore" >loadProductsToFirestore</a>
+                            </li>
+                            <li>
                                 <a href="#searchProducts" >searchProducts</a>
+                            </li>
+                            <li>
+                                <a href="#updateProduct" >updateProduct</a>
                             </li>
                         </ul>
                     </td>
@@ -181,18 +196,18 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(http: HttpClient)</code>
+<code>constructor(firestore: Firestore, http: HttpClient)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/product.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/product.service.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Constructor que inyecta el cliente HTTP para realizar solicitudes.</p>
+                            <div class="io-description"><p>Constructor del servicio ProductService.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -207,6 +222,22 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
+                                                        <td>firestore</td>
+                                                  
+                                                        <td>
+                                                                    <code>Firestore</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio Firestore para realizar operaciones en la base de datos.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
                                                         <td>http</td>
                                                   
                                                         <td>
@@ -218,7 +249,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>Cliente HTTP para realizar solicitudes.</p>
+                                                                <p>Servicio HttpClient para realizar solicitudes HTTP.</p>
 
                                                         </td>
                                                 </tr>
@@ -240,6 +271,156 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="addProduct"></a>
+                    <span class="name">
+                        <span ><b>addProduct</b></span>
+                        <a href="#addProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addProduct(product: <a href="../classes/Product.html" target="_self">Product</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/services/product.service.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Agrega un nuevo producto a Firestore.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>product</td>
+                                            <td>
+                                                            <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El producto a agregar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un Observable que completa cuando se agrega el producto.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteProduct"></a>
+                    <span class="name">
+                        <span ><b>deleteProduct</b></span>
+                        <a href="#deleteProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteProduct(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/services/product.service.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un producto existente de Firestore.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El ID del producto a eliminar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un Observable que completa cuando se elimina el producto.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getProducts"></a>
                     <span class="name">
                         <span ><b>getProducts</b></span>
@@ -256,23 +437,109 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/services/product.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/services/product.service.ts:30</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene la lista de productos desde el archivo JSON.</p>
+                        <div class="io-description"><p>Obtiene todos los productos desde Firestore.</p>
 </div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/Product.html" target="_self" >Observable&lt;Product[]&gt;</a></code>
+                            <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Observable&lt;Product[]&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>Observable que emite una lista de productos.</p>
+                                <p>Un Observable que emite un array de productos.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProductsFromJson"></a>
+                    <span class="name">
+                        <span ><b>getProductsFromJson</b></span>
+                        <a href="#getProductsFromJson"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProductsFromJson()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/services/product.service.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene los productos desde un archivo JSON externo mediante una solicitud HTTP.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Observable&lt;Product[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un Observable que emite un array de productos desde el JSON.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadProductsToFirestore"></a>
+                    <span class="name">
+                        <span ><b>loadProductsToFirestore</b></span>
+                        <a href="#loadProductsToFirestore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadProductsToFirestore()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/services/product.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga los productos desde un archivo JSON externo a Firestore.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un Observable que completa cuando se cargan todos los productos.</p>
 
                             </div>
                 </td>
@@ -292,22 +559,22 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>searchProducts(query: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>searchProducts(queryStr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/app/services/product.service.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/services/product.service.ts:101</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Busca productos que coincidan con una consulta dada en el nombre o descripción del producto.</p>
+                        <div class="io-description"><p>Busca productos en Firestore que coincidan con el término de búsqueda.</p>
 </div>
 
                             <div class="io-description">
@@ -324,7 +591,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>query</td>
+                                                <td>queryStr</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -335,7 +602,7 @@
 
 
                                             <td>
-                                                    <p>La consulta de búsqueda.</p>
+                                                    <p>El término de búsqueda.</p>
 
                                             </td>
                                         </tr>
@@ -343,11 +610,102 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/Product.html" target="_self" >Observable&lt;Product[]&gt;</a></code>
+                            <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Observable&lt;Product[]&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>Observable que emite una lista de productos que coinciden con la consulta.</p>
+                                <p>Un Observable que emite un array de productos que coinciden con la búsqueda.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProduct"></a>
+                    <span class="name">
+                        <span ><b>updateProduct</b></span>
+                        <a href="#updateProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateProduct(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, product: <a href="../classes/Product.html" target="_self">Product</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/services/product.service.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza un producto existente en Firestore.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El ID del producto a actualizar.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>product</td>
+                                            <td>
+                                                            <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El producto actualizado.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un Observable que completa cuando se actualiza el producto.</p>
 
                             </div>
                 </td>
@@ -364,11 +722,11 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="dataUrl"></a>
+                    <a name="jsonUrl"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
-                        <span ><b>dataUrl</b></span>
-                        <a href="#dataUrl"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>jsonUrl</b></span>
+                        <a href="#jsonUrl"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -380,18 +738,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;app/data/productos.json&#x27;</code>
+                        <i>Default value : </i><code>&#x27;https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/productos.json?alt&#x3D;media&amp;token&#x3D;7e185c71-ea77-4bcf-b557-48ba39e08ab6&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/product.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/product.service.ts:17</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>URL para obtener los datos de productos</p>
+                    <div class="io-description"><p>URL del archivo JSON con los datos de los productos.</p>
 </div>
                 </td>
             </tr>
@@ -405,47 +763,110 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Firestore, collection, collectionData, doc, setDoc, deleteDoc, updateDoc } from &#x27;@angular/fire/firestore&#x27;;
+import { from, Observable } from &#x27;rxjs&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { map } from &#x27;rxjs/operators&#x27;;
 import { Product } from &#x27;../models/product.model&#x27;;
+import { map, tap } from &#x27;rxjs/operators&#x27;;
 
 /**
- * ProductService gestiona las operaciones relacionadas con los productos, incluyendo la obtención y búsqueda de productos.
+ * Servicio para la gestión de productos, incluyendo operaciones CRUD y carga desde JSON.
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class ProductService {
-  /** URL para obtener los datos de productos */
-  private dataUrl &#x3D; &#x27;app/data/productos.json&#x27;;
+
+  /** URL del archivo JSON con los datos de los productos. */
+  private jsonUrl &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/productos.json?alt&#x3D;media&amp;token&#x3D;7e185c71-ea77-4bcf-b557-48ba39e08ab6&#x27;;
 
   /**
-   * Constructor que inyecta el cliente HTTP para realizar solicitudes.
-   * @param http Cliente HTTP para realizar solicitudes.
+   * Constructor del servicio ProductService.
+   * @param firestore Servicio Firestore para realizar operaciones en la base de datos.
+   * @param http Servicio HttpClient para realizar solicitudes HTTP.
    */
-  constructor(private http: HttpClient) { }
+  constructor(private firestore: Firestore, private http: HttpClient) { }
 
   /**
-   * Obtiene la lista de productos desde el archivo JSON.
-   * @returns Observable que emite una lista de productos.
+   * Obtiene todos los productos desde Firestore.
+   * @returns Un Observable que emite un array de productos.
    */
   getProducts(): Observable&lt;Product[]&gt; {
-    return this.http.get&lt;{ productos: Product[] }&gt;(this.dataUrl).pipe(
-      map(response &#x3D;&gt; response.productos)
+    const productsRef &#x3D; collection(this.firestore, &#x27;productos&#x27;);
+    return collectionData(productsRef, { idField: &#x27;id&#x27; }) as Observable&lt;Product[]&gt;;
+  }
+
+  /**
+   * Agrega un nuevo producto a Firestore.
+   * @param product El producto a agregar.
+   * @returns Un Observable que completa cuando se agrega el producto.
+   */
+  addProduct(product: Product): Observable&lt;void&gt; {
+    const productsRef &#x3D; collection(this.firestore, &#x27;productos&#x27;);
+    const newDocRef &#x3D; doc(productsRef);
+    return from(setDoc(newDocRef, { ...product })) as Observable&lt;void&gt;;
+  }
+
+  /**
+   * Actualiza un producto existente en Firestore.
+   * @param id El ID del producto a actualizar.
+   * @param product El producto actualizado.
+   * @returns Un Observable que completa cuando se actualiza el producto.
+   */
+  updateProduct(id: string, product: Product): Observable&lt;void&gt; {
+    const productDoc &#x3D; doc(this.firestore, &#x60;productos/${id}&#x60;);
+    return from(updateDoc(productDoc, { ...product })) as Observable&lt;void&gt;;
+  }
+
+  /**
+   * Elimina un producto existente de Firestore.
+   * @param id El ID del producto a eliminar.
+   * @returns Un Observable que completa cuando se elimina el producto.
+   */
+  deleteProduct(id: string): Observable&lt;void&gt; {
+    const productDoc &#x3D; doc(this.firestore, &#x60;productos/${id}&#x60;);
+    return from(deleteDoc(productDoc)) as Observable&lt;void&gt;;
+  }
+
+  /**
+   * Obtiene los productos desde un archivo JSON externo mediante una solicitud HTTP.
+   * @returns Un Observable que emite un array de productos desde el JSON.
+   */
+  getProductsFromJson(): Observable&lt;Product[]&gt; {
+    return this.http.get&lt;{ productos: Product[] }&gt;(this.jsonUrl).pipe(
+      tap(response &#x3D;&gt; console.log(&#x27;JSON response:&#x27;, response)), // Verificar respuesta
+      map(response &#x3D;&gt; response.productos),
+      tap(products &#x3D;&gt; console.log(&#x27;Mapped products:&#x27;, products)) // Verificar productos mapeados
     );
   }
 
   /**
-   * Busca productos que coincidan con una consulta dada en el nombre o descripción del producto.
-   * @param query La consulta de búsqueda.
-   * @returns Observable que emite una lista de productos que coinciden con la consulta.
+   * Carga los productos desde un archivo JSON externo a Firestore.
+   * @returns Un Observable que completa cuando se cargan todos los productos.
    */
-  searchProducts(query: string): Observable&lt;Product[]&gt; {
+  loadProductsToFirestore(): Observable&lt;void&gt; {
+    return this.getProductsFromJson().pipe(
+      map(products &#x3D;&gt; {
+        products.forEach(product &#x3D;&gt; {
+          const productsRef &#x3D; collection(this.firestore, &#x27;productos&#x27;);
+          const newDocRef &#x3D; doc(productsRef);
+          setDoc(newDocRef, { ...product });
+        });
+        return;
+      })
+    );
+  }
+
+  /**
+   * Busca productos en Firestore que coincidan con el término de búsqueda.
+   * @param queryStr El término de búsqueda.
+   * @returns Un Observable que emite un array de productos que coinciden con la búsqueda.
+   */
+  searchProducts(queryStr: string): Observable&lt;Product[]&gt; {
     return this.getProducts().pipe(
       map(products &#x3D;&gt; products.filter(product &#x3D;&gt;
-        product.nombre.toLowerCase().includes(query.toLowerCase()) ||
-        product.descripcion.toLowerCase().includes(query.toLowerCase())
+        product.nombre.toLowerCase().includes(queryStr.toLowerCase()) ||
+        product.descripcion.toLowerCase().includes(queryStr.toLowerCase())
       ))
     );
   }

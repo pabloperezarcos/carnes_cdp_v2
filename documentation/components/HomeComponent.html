@@ -106,6 +106,10 @@
                 role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
         <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
             <a href="#tree" class="nav-link"
                 role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
@@ -174,6 +178,10 @@
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./home.component.scss</code></td>
+            </tr>
 
 
 
@@ -184,10 +192,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">styleUrl</td>
-                <td class="col-md-9"><code>./home.component.scss</code></td>
-            </tr>
 
 
 
@@ -218,6 +222,10 @@
                             <li>
                                 <a href="#testimonios" >testimonios</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#testimoniosUrl" >testimoniosUrl</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -235,6 +243,14 @@
                             </li>
                             <li>
                                 <a href="#getEstrellas" >getEstrellas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadProductosFromJson" >loadProductosFromJson</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadTestimonios" >loadTestimonios</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
@@ -262,7 +278,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/home/home.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/home/home.component.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -352,8 +368,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="86"
-                                    class="link-to-prism">src/app/pages/home/home.component.ts:86</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -427,8 +443,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/app/pages/home/home.component.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -486,6 +502,88 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="loadProductosFromJson"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadProductosFromJson</b></span>
+                        <a href="#loadProductosFromJson"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadProductosFromJson()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga la lista de productos desde el JSON.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadTestimonios"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadTestimonios</b></span>
+                        <a href="#loadTestimonios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadTestimonios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga la lista de testimonios desde el JSON.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
                         <span ><b>ngOnInit</b></span>
@@ -502,8 +600,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/pages/home/home.component.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -571,7 +669,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Product.html" target="_self" >Product[]</a></code>
+                        <i>Type : </i>        <code><a href="../classes/Product.html" target="_self" >Product[]</a></code>
 
                     </td>
                 </tr>
@@ -632,6 +730,44 @@
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="testimoniosUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>testimoniosUrl</b></span>
+                        <a href="#testimoniosUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/testimonios.json?alt&#x3D;media&amp;token&#x3D;a314f03c-2ea6-4184-80a4-8be039047526&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/home/home.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL del archivo JSON de testimonios en Firebase Storage</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -670,7 +806,7 @@ interface Testimonio {
   standalone: true,
   imports: [NgIf, NgFor, CommonModule, RouterModule, CurrencyPipe],
   templateUrl: &#x27;./home.component.html&#x27;,
-  styleUrl: &#x27;./home.component.scss&#x27;
+  styleUrls: [&#x27;./home.component.scss&#x27;]
 })
 export class HomeComponent implements OnInit {
   /** Lista de productos */
@@ -681,6 +817,9 @@ export class HomeComponent implements OnInit {
 
   /** Lista de testimonios */
   testimonios: Testimonio[] &#x3D; [];
+
+  /** URL del archivo JSON de testimonios en Firebase Storage */
+  private testimoniosUrl &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/testimonios.json?alt&#x3D;media&amp;token&#x3D;a314f03c-2ea6-4184-80a4-8be039047526&#x27;;
 
   /**
    * Constructor que inyecta el servicio de productos y el cliente HTTP.
@@ -693,16 +832,37 @@ export class HomeComponent implements OnInit {
    * Inicializa el componente cargando la lista de productos y testimonios.
    */
   ngOnInit() {
-    this.http.get&lt;{ testimonios: Testimonio[] }&gt;(&#x27;app/data/testimonios.json&#x27;).subscribe(data &#x3D;&gt; {
-      this.testimonios &#x3D; data.testimonios;
-    });
-    this.productService.getProducts().subscribe({
+    this.loadTestimonios();
+    this.loadProductosFromJson(); // Cambiado para cargar productos desde JSON
+  }
+
+  /**
+   * Carga la lista de testimonios desde el JSON.
+   */
+  private loadTestimonios(): void {
+    this.http.get&lt;{ testimonios: Testimonio[] }&gt;(this.testimoniosUrl).subscribe({
       next: (data) &#x3D;&gt; {
+        console.log(&#x27;Testimonios obtenidos:&#x27;, data.testimonios); // Agregar este log
+        this.testimonios &#x3D; data.testimonios;
+      },
+      error: (err) &#x3D;&gt; {
+        console.error(&#x27;Error obteniendo testimonios:&#x27;, err);
+      }
+    });
+  }
+
+  /**
+   * Carga la lista de productos desde el JSON.
+   */
+  private loadProductosFromJson(): void {
+    this.productService.getProductsFromJson().subscribe({
+      next: (data) &#x3D;&gt; {
+        console.log(&#x27;Productos obtenidos:&#x27;, data); // Agregar este log
         this.productos &#x3D; data.slice(0, 3);
         this.loading &#x3D; false;
       },
       error: (err) &#x3D;&gt; {
-        console.error(err);
+        console.error(&#x27;Error obteniendo productos:&#x27;, err);
         this.loading &#x3D; false;
       },
       complete: () &#x3D;&gt; console.log(&#x27;Carga de productos completa&#x27;)
@@ -731,15 +891,15 @@ export class HomeComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;!-- Sección principal &#x27;Hero Section&#x27; con imagen destacada y llamado a la acción --&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- src/app/components/home/home.component.html --&gt;
+&lt;!-- Sección principal &#x27;Hero Section&#x27; con imagen destacada y llamado a la acción --&gt;
 &lt;div class&#x3D;&quot;jumbotron text-center&quot;&gt;
     &lt;img src&#x3D;&quot;assets/logo.png&quot; alt&#x3D;&quot;Carnes CDP&quot; class&#x3D;&quot;hero-logo&quot;&gt;
     &lt;h1 class&#x3D;&quot;display-4&quot;&gt;Bienvenidos a Carnes CDP&lt;/h1&gt;
     &lt;p class&#x3D;&quot;lead&quot;&gt;Las mejores carnes al mejor precio.&lt;/p&gt;
     &lt;hr class&#x3D;&quot;my-4&quot;&gt;
     &lt;p&gt;Explora nuestras ofertas y productos frescos.&lt;/p&gt;
-    &lt;a class&#x3D;&quot;btn btn-primary btn-lg pulse-on-hover&quot; href&#x3D;&quot;/catalogo&quot; role&#x3D;&quot;button&quot;&gt;Ver Todos los
-        Productos&lt;/a&gt;
+    &lt;a class&#x3D;&quot;btn btn-primary btn-lg pulse-on-hover&quot; href&#x3D;&quot;/catalogo&quot; role&#x3D;&quot;button&quot;&gt;Ver Todos los Productos&lt;/a&gt;
 &lt;/div&gt;
 &lt;br&gt;
 &lt;div *ngIf&#x3D;&quot;loading&quot;&gt;Cargando productos...&lt;/div&gt;
@@ -780,6 +940,89 @@ export class HomeComponent implements OnInit {
 &lt;/div&gt;</code></pre>
     </div>
 
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./home.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* home.component.scss */
+.jumbotron {
+    background: url(&#x27;/assets/presentacion.jpg&#x27;) no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+.jumbotron::after {
+    content: &#x27;&#x27;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron h1,
+.jumbotron p {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.jumbotron .btn-primary {
+    background-color: #800000;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    height: 350px;
+    margin-bottom: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+.estrellas {
+    .fa-star {
+        color: #ffd700;
+    }
+
+    .fa-star.checked {
+        color: #ffd700;
+    }
+}
+
+.card {
+    .card-img-top {
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+    }
+}
+
+.estrellas {
+    .fa-star {
+        color: #d3d3d3;
+    }
+
+    .checked {
+        color: #ffc107;
+    }
+}</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -806,8 +1049,8 @@ export class HomeComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Sección principal \'Hero Section\' con imagen destacada y llamado a la acción --><div class="jumbotron text-center">    <img src="assets/logo.png" alt="Carnes CDP" class="hero-logo">    <h1 class="display-4">Bienvenidos a Carnes CDP</h1>    <p class="lead">Las mejores carnes al mejor precio.</p>    <hr class="my-4">    <p>Explora nuestras ofertas y productos frescos.</p>    <a class="btn btn-primary btn-lg pulse-on-hover" href="/catalogo" role="button">Ver Todos los        Productos</a></div><br><div *ngIf="loading">Cargando productos...</div><div class="container" *ngIf="!loading">    <div class="row">        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of productos">            <div class="card lift-on-hover">                <img [src]="product.imagen" class="card-img-top" alt="{{product.nombre}}">                <div class="card-body">                    <h5 class="card-title">{{product.nombre}}</h5>                    <p class="card-text">{{product.descripcion}}</p>                    <p class="price">{{ product.precio | currency:\'CLP\':\'symbol-narrow\':\'1.0-0\':\'es-CL\' }} / 1 kilo</p>                    <a [routerLink]="[\'/producto\', product.sku]" class="btn btn-primary">Ver Producto</a>                </div>            </div>        </div>    </div></div><div class="container mt-5">    <h2>Testimonios de Clientes</h2>    <div class="row">        <div *ngFor="let testimonio of testimonios" class="col-md-4">            <div class="card mb-4">                <img [src]="testimonio.imagen" class="card-img-top" alt="{{testimonio.nombre}}">                <div class="card-body">                    <h5 class="card-title">{{testimonio.nombre}}</h5>                    <p class="card-text">{{testimonio.comentario}}</p>                    <div class="estrellas">                        <span *ngFor="let estrella of getEstrellas(testimonio.estrellas)"                            class="fa fa-star checked"></span>                        <span *ngFor="let estrella of getEmptyEstrellas(testimonio.estrellas)"                            class="fa fa-star"></span>                    </div>                </div>            </div>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminProductosComponent', 'selector': 'app-admin-productos'},{'name': 'AdminUsuariosComponent', 'selector': 'app-admin-usuarios'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductDetailComponent', 'selector': 'app-product-detail'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'}];
+        var COMPONENT_TEMPLATE = '<div><!-- src/app/components/home/home.component.html --><!-- Sección principal \'Hero Section\' con imagen destacada y llamado a la acción --><div class="jumbotron text-center">    <img src="assets/logo.png" alt="Carnes CDP" class="hero-logo">    <h1 class="display-4">Bienvenidos a Carnes CDP</h1>    <p class="lead">Las mejores carnes al mejor precio.</p>    <hr class="my-4">    <p>Explora nuestras ofertas y productos frescos.</p>    <a class="btn btn-primary btn-lg pulse-on-hover" href="/catalogo" role="button">Ver Todos los Productos</a></div><br><div *ngIf="loading">Cargando productos...</div><div class="container" *ngIf="!loading">    <div class="row">        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of productos">            <div class="card lift-on-hover">                <img [src]="product.imagen" class="card-img-top" alt="{{product.nombre}}">                <div class="card-body">                    <h5 class="card-title">{{product.nombre}}</h5>                    <p class="card-text">{{product.descripcion}}</p>                    <p class="price">{{ product.precio | currency:\'CLP\':\'symbol-narrow\':\'1.0-0\':\'es-CL\' }} / 1 kilo</p>                    <a [routerLink]="[\'/producto\', product.sku]" class="btn btn-primary">Ver Producto</a>                </div>            </div>        </div>    </div></div><div class="container mt-5">    <h2>Testimonios de Clientes</h2>    <div class="row">        <div *ngFor="let testimonio of testimonios" class="col-md-4">            <div class="card mb-4">                <img [src]="testimonio.imagen" class="card-img-top" alt="{{testimonio.nombre}}">                <div class="card-body">                    <h5 class="card-title">{{testimonio.nombre}}</h5>                    <p class="card-text">{{testimonio.comentario}}</p>                    <div class="estrellas">                        <span *ngFor="let estrella of getEstrellas(testimonio.estrellas)"                            class="fa fa-star checked"></span>                        <span *ngFor="let estrella of getEmptyEstrellas(testimonio.estrellas)"                            class="fa fa-star"></span>                    </div>                </div>            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminProductosComponent', 'selector': 'app-admin-productos'},{'name': 'AdminUsuariosComponent', 'selector': 'app-admin-usuarios'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductDetailComponent', 'selector': 'app-product-detail'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
 </script>
