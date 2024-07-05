@@ -124,14 +124,6 @@
 </p>
 
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>CarritoComponent maneja la visualización y lógica del carrito de compras.
-Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p>
-
-    </p>
 
 
     <p class="comment">
@@ -247,6 +239,9 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                 <a href="#checkIfCartIsEmpty" >checkIfCartIsEmpty</a>
                             </li>
                             <li>
+                                <a href="#limpiarCarrito" >limpiarCarrito</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
@@ -276,19 +271,17 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(carritoService: <a href="../injectables/CarritoService.html" target="_self">CarritoService</a>)</code>
+<code>constructor(carritoService: <a href="../injectables/CarritoService.html" target="_self">CarritoService</a>, router: Router)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Constructor que inyecta el servicio de carrito para gestionar los ítems del carrito.</p>
-</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -297,7 +290,6 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -312,10 +304,18 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                                             No
                                                     </td>
                                                     
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
                                                         <td>
-                                                                <p>Servicio que proporciona operaciones relacionadas con el carrito de compras.</p>
-
+                                                                    <code>Router</code>
                                                         </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -355,16 +355,14 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:35</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Calcula el total del carrito sumando los precios de los productos por sus cantidades.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -394,16 +392,51 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="93"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:93</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:52</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Verifica si el carrito está vacío y actualiza el estado correspondiente.</p>
-</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarCarrito"></a>
+                    <span class="name">
+                        <span ><b>limpiarCarrito</b></span>
+                        <a href="#limpiarCarrito"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarCarrito()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -433,16 +466,14 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:29</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Inicializa el componente cargando los ítems del carrito y calculando el total.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -472,16 +503,14 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="100"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:100</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:56</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Procede al pago, mostrando mensajes según el estado del proceso de pago.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -511,16 +540,14 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="72"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:72</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:39</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina un ítem del carrito basado en su índice y actualiza el total y el estado del carrito.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -531,7 +558,6 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -546,10 +572,6 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                             </td>
 
 
-                                            <td>
-                                                    <p>Índice del ítem a eliminar.</p>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -585,16 +607,14 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.component.ts:46</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza la cantidad de un ítem en el carrito y recalcula el total.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -605,7 +625,6 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -620,10 +639,6 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                             </td>
 
 
-                                            <td>
-                                                    <p>Índice del ítem a actualizar.</p>
-
-                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>quantity</td>
@@ -636,10 +651,6 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                                             </td>
 
 
-                                            <td>
-                                                    <p>Nueva cantidad del ítem.</p>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -685,16 +696,10 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:21</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Lista de ítems en el carrito</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -722,16 +727,10 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:25</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Indica si el carrito está vacío</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -759,16 +758,10 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:24</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Mensaje de estado del pago</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -796,16 +789,10 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:23</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Método de pago seleccionado</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -833,16 +820,10 @@ Permite agregar, actualizar y eliminar productos, así como proceder al pago.</p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/carrito/carrito.component.ts:22</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Total del carrito</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -857,23 +838,13 @@ import { CarritoService } from &#x27;../../services/carrito.service&#x27;;
 import { Product } from &#x27;../../models/product.model&#x27;;
 import { CommonModule, CurrencyPipe } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
-import { RouterModule } from &#x27;@angular/router&#x27;;
+import { RouterModule, Router } from &#x27;@angular/router&#x27;;
 
-/**
- * Representa un ítem en el carrito de compras.
- */
 interface CarritoItem {
-  /** El producto del ítem del carrito. */
   product: Product;
-
-  /** La cantidad del producto en el carrito. */
   quantity: number;
 }
 
-/**
- * CarritoComponent maneja la visualización y lógica del carrito de compras.
- * Permite agregar, actualizar y eliminar productos, así como proceder al pago.
- */
 @Component({
   selector: &#x27;app-carrito&#x27;,
   templateUrl: &#x27;./carrito.component.html&#x27;,
@@ -882,47 +853,24 @@ interface CarritoItem {
   imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe]
 })
 export class CarritoComponent implements OnInit {
-  /** Lista de ítems en el carrito */
   carritoItems: CarritoItem[] &#x3D; [];
-
-  /** Total del carrito */
   total: number &#x3D; 0;
-
-  /** Método de pago seleccionado */
   paymentMethod: string &#x3D; &#x27;&#x27;;
-
-  /** Mensaje de estado del pago */
   paymentMessage: string &#x3D; &#x27;&#x27;;
-
-  /** Indica si el carrito está vacío */
   isCartEmpty: boolean &#x3D; true;
 
-  /**
-   * Constructor que inyecta el servicio de carrito para gestionar los ítems del carrito.
-   * @param carritoService Servicio que proporciona operaciones relacionadas con el carrito de compras.
-   */
-  constructor(private carritoService: CarritoService) { }
+  constructor(private carritoService: CarritoService, private router: Router) { }
 
-  /**
-   * Inicializa el componente cargando los ítems del carrito y calculando el total.
-   */
   ngOnInit(): void {
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
     this.calculateTotal();
     this.checkIfCartIsEmpty();
   }
 
-  /**
-   * Calcula el total del carrito sumando los precios de los productos por sus cantidades.
-   */
   calculateTotal(): void {
     this.total &#x3D; this.carritoItems.reduce((sum, item) &#x3D;&gt; sum + (item.product?.precio ?? 0) * (item.quantity ?? 0), 0);
   }
 
-  /**
-   * Elimina un ítem del carrito basado en su índice y actualiza el total y el estado del carrito.
-   * @param index Índice del ítem a eliminar.
-   */
   removeItem(index: number): void {
     this.carritoService.removeFromCarrito(this.carritoItems[index].product);
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
@@ -930,27 +878,16 @@ export class CarritoComponent implements OnInit {
     this.checkIfCartIsEmpty();
   }
 
-  /**
-   * Actualiza la cantidad de un ítem en el carrito y recalcula el total.
-   * @param index Índice del ítem a actualizar.
-   * @param quantity Nueva cantidad del ítem.
-   */
   updateQuantity(index: number, quantity: number): void {
     this.carritoService.updateQuantity(this.carritoItems[index].product, quantity);
     this.carritoItems &#x3D; this.carritoService.getCarritoItems();
     this.calculateTotal();
   }
 
-  /**
-   * Verifica si el carrito está vacío y actualiza el estado correspondiente.
-   */
   checkIfCartIsEmpty(): void {
     this.isCartEmpty &#x3D; this.carritoItems.length &#x3D;&#x3D;&#x3D; 0;
   }
 
-  /**
-   * Procede al pago, mostrando mensajes según el estado del proceso de pago.
-   */
   procederAlPago(): void {
     if (!this.paymentMethod) {
       this.paymentMessage &#x3D; &#x27;Seleccione un método de pago&#x27;;
@@ -960,8 +897,21 @@ export class CarritoComponent implements OnInit {
     this.paymentMessage &#x3D; &#x60;Accediendo a Plataforma ${this.paymentMethod}...&#x60;;
 
     setTimeout(() &#x3D;&gt; {
-      this.paymentMessage &#x3D; &#x27;Pago Exitoso&#x27;;
+      this.paymentMessage &#x3D; &#x27;Pago Exitoso, estás siendo redireccionado al checkout...&#x27;;
+      this.carritoService.savePurchasedItems();
+
+      setTimeout(() &#x3D;&gt; {
+        this.limpiarCarrito();
+        this.router.navigate([&#x27;/checkout&#x27;]);
+      }, 4000);  // Esperar 3 segundos antes de redireccionar
     }, 3000);
+  }
+
+  limpiarCarrito(): void {
+    this.carritoService.clearCarrito();
+    this.carritoItems &#x3D; [];
+    this.calculateTotal();
+    this.checkIfCartIsEmpty();
   }
 }
 </code></pre>
@@ -1155,7 +1105,7 @@ input.form-control {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!-- carrito.component.html --><div class="jumbotron text-center">    <h1 class="display-4">Carrito de Compras</h1>    <p class="lead">Revisa tus productos antes de proceder al pago.</p></div><div class="container">    <nav aria-label="breadcrumb" class="breadcrumb-container">        <ol class="breadcrumb">            <li class="breadcrumb-item"><a routerLink="/">Inicio</a></li>            <li class="breadcrumb-item"><a routerLink="/catalogo">Catálogo</a></li>            <li class="breadcrumb-item active" aria-current="page">Carrito de compras</li>        </ol>    </nav>    <div class="row">        <div class="col-md-8">            <h3>Tu Carrito</h3>            <div *ngFor="let item of carritoItems; let i = index" class="card mb-3">                <div class="card-body">                    <div class="row">                        <div class="col-md-2">                            <img [src]="item.product.imagen" alt="{{ item.product.nombre }}" class="img-thumbnail"                                style="width: 100%;">                        </div>                        <div class="col-md-6">                            <h5>{{ item.product.nombre }}</h5>                            <p>{{ item.product.precio | currency:\'CLP\':\'symbol-narrow\':\'1.0-0\':\'es-CL\' }} x {{                                item.quantity}}</p>                        </div>                        <div class="col-md-4 text-right">                            <label for="cantidad-{{i}}" class="sr-only">Cantidad</label>                            <input type="number" id="cantidad-{{i}}" class="form-control mb-2"                                [(ngModel)]="item.quantity" (change)="updateQuantity(i, item.quantity)" min="1"                                title="Ingrese la cantidad" placeholder="Cantidad">                            <button class="btn btn-danger" (click)="removeItem(i)">Eliminar</button>                        </div>                    </div>                </div>            </div>        </div>        <div class="col-md-4">            <h3>Resumen de la Compra</h3>            <div class="card">                <div class="card-body">                    <p>Total: <strong>{{ total | currency:\'CLP\':\'symbol-narrow\':\'1.0-0\':\'es-CL\' }}</strong></p>                    <div>                        <h5>Seleccione el método de pago</h5>                        <div class="form-check">                            <input class="form-check-input" type="radio" name="paymentMethod"                                [(ngModel)]="paymentMethod" value="WebPay" id="WebPay">                            <label class="form-check-label" for="WebPay">                                WebPay                            </label>                        </div>                        <div class="form-check">                            <input class="form-check-input" type="radio" name="paymentMethod"                                [(ngModel)]="paymentMethod" value="MercadoPago" id="MercadoPago">                            <label class="form-check-label" for="MercadoPago">                                MercadoPago                            </label>                        </div>                        <div class="form-check">                            <input class="form-check-input" type="radio" name="paymentMethod"                                [(ngModel)]="paymentMethod" value="Flow.cl" id="Flow.cl">                            <label class="form-check-label" for="Flow.cl">                                Flow.cl                            </label>                        </div>                    </div>                    <button class="btn btn-primary btn-block mt-3" [disabled]="isCartEmpty || !paymentMethod"                        [ngClass]="{\'disabled\': isCartEmpty || !paymentMethod}" (click)="procederAlPago()">Proceder al                        Pago</button>                    <div *ngIf="paymentMessage" class="alert alert-info mt-3">                        {{ paymentMessage }}                    </div>                </div>            </div>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminProductosComponent', 'selector': 'app-admin-productos'},{'name': 'AdminUsuariosComponent', 'selector': 'app-admin-usuarios'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductDetailComponent', 'selector': 'app-product-detail'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'}];
+    var COMPONENTS = [{'name': 'AdminProductosComponent', 'selector': 'app-admin-productos'},{'name': 'AdminUsuariosComponent', 'selector': 'app-admin-usuarios'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductDetailComponent', 'selector': 'app-product-detail'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CarritoComponent'};
 </script>

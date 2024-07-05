@@ -121,6 +121,9 @@
                             <a href="#config" title="src/app/app.config.server.ts" ><b>config</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.server.ts)</a>
                         </li>
                         <li>
+                            <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
+                        </li>
+                        <li>
                             <a href="#serverConfig" title="src/app/app.config.server.ts" ><b>serverConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.server.ts)</a>
                         </li>
                     </ul>
@@ -153,32 +156,17 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   providers: [
-    // Proporciona detección de cambios de zona con coalescencia de eventos.
-    provideZoneChangeDetection({ eventCoalescing: true }),
-
-    // Proporciona enrutamiento con las rutas definidas.
     provideRouter(routes),
-
-    // Proporciona un cliente HTTP con soporte para fetch.
-    provideHttpClient(withFetch()),
-
-    // Importa los proveedores del módulo de formularios.
+    provideHttpClient(withFetch(), withInterceptorsFromDi()),
     importProvidersFrom(FormsModule),
-
-    // Proporciona la configuración de localización.
-    { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; }
+    { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; },
+    provideFirebaseApp(() &#x3D;&gt; initializeApp(environment.firebase)),
+    provideFirestore(() &#x3D;&gt; getFirestore()),
   ]
 }</code>
                     </td>
                 </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Configuración de la aplicación.
-Proporciona configuraciones y proveedores necesarios para la aplicación Angular.</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -275,6 +263,53 @@ Inicializa la aplicación Angular utilizando la configuración especificada y el
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    production: false,
+    firebase: {
+        apiKey: &quot;AIzaSyBpHDL7bQ3XPTOtaClNjAjZyFtYwcl_gaY&quot;,
+
+        authDomain: &quot;carnescdpv2.firebaseapp.com&quot;,
+
+        projectId: &quot;carnescdpv2&quot;,
+
+        storageBucket: &quot;carnescdpv2.appspot.com&quot;,
+
+        messagingSenderId: &quot;432247060096&quot;,
+
+        appId: &quot;1:432247060096:web:840b61645de89b485e1865&quot;,
+
+        measurementId: &quot;G-X8NZ26BBRL&quot;
+
+    }
+}</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>

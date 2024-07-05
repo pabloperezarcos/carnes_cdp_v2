@@ -375,7 +375,7 @@ interface Testimonio {
   standalone: true,
   imports: [NgIf, NgFor, CommonModule, RouterModule, CurrencyPipe],
   templateUrl: &#x27;./home.component.html&#x27;,
-  styleUrl: &#x27;./home.component.scss&#x27;
+  styleUrls: [&#x27;./home.component.scss&#x27;]
 })
 export class HomeComponent implements OnInit {
   /** Lista de productos */
@@ -386,6 +386,9 @@ export class HomeComponent implements OnInit {
 
   /** Lista de testimonios */
   testimonios: Testimonio[] &#x3D; [];
+
+  /** URL del archivo JSON de testimonios en Firebase Storage */
+  private testimoniosUrl &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/testimonios.json?alt&#x3D;media&amp;token&#x3D;a314f03c-2ea6-4184-80a4-8be039047526&#x27;;
 
   /**
    * Constructor que inyecta el servicio de productos y el cliente HTTP.
@@ -398,16 +401,37 @@ export class HomeComponent implements OnInit {
    * Inicializa el componente cargando la lista de productos y testimonios.
    */
   ngOnInit() {
-    this.http.get&lt;{ testimonios: Testimonio[] }&gt;(&#x27;app/data/testimonios.json&#x27;).subscribe(data &#x3D;&gt; {
-      this.testimonios &#x3D; data.testimonios;
-    });
-    this.productService.getProducts().subscribe({
+    this.loadTestimonios();
+    this.loadProductosFromJson(); // Cambiado para cargar productos desde JSON
+  }
+
+  /**
+   * Carga la lista de testimonios desde el JSON.
+   */
+  private loadTestimonios(): void {
+    this.http.get&lt;{ testimonios: Testimonio[] }&gt;(this.testimoniosUrl).subscribe({
       next: (data) &#x3D;&gt; {
+        console.log(&#x27;Testimonios obtenidos:&#x27;, data.testimonios); // Agregar este log
+        this.testimonios &#x3D; data.testimonios;
+      },
+      error: (err) &#x3D;&gt; {
+        console.error(&#x27;Error obteniendo testimonios:&#x27;, err);
+      }
+    });
+  }
+
+  /**
+   * Carga la lista de productos desde el JSON.
+   */
+  private loadProductosFromJson(): void {
+    this.productService.getProductsFromJson().subscribe({
+      next: (data) &#x3D;&gt; {
+        console.log(&#x27;Productos obtenidos:&#x27;, data); // Agregar este log
         this.productos &#x3D; data.slice(0, 3);
         this.loading &#x3D; false;
       },
       error: (err) &#x3D;&gt; {
-        console.error(err);
+        console.error(&#x27;Error obteniendo productos:&#x27;, err);
         this.loading &#x3D; false;
       },
       complete: () &#x3D;&gt; console.log(&#x27;Carga de productos completa&#x27;)
