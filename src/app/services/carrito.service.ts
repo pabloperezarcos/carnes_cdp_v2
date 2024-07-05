@@ -6,8 +6,10 @@ import { BehaviorSubject } from 'rxjs';
  * Interfaz que define la estructura de un item en el carrito.
  */
 interface CarritoItem {
-  product: Product; // Producto en el carrito
-  quantity: number; // Cantidad del producto en el carrito
+  /** Producto en el carrito. */
+  product: Product;
+  /** Cantidad del producto en el carrito. */
+  quantity: number;
 }
 
 /**
@@ -19,7 +21,8 @@ interface CarritoItem {
 export class CarritoService {
   private carritoItems: CarritoItem[] = []; // Array que contiene los items del carrito
   private carritoSubject = new BehaviorSubject<CarritoItem[]>(this.carritoItems); // Sujeto BehaviorSubject para notificar cambios en el carrito
-  carritoActualizado = this.carritoSubject.asObservable(); // Observable para suscribirse a cambios en el carrito
+  /** Observable para suscribirse a cambios en el carrito. */
+  carritoActualizado = this.carritoSubject.asObservable();
   private purchasedItems: CarritoItem[] = []; // Array que contiene los items comprados
 
   constructor() {
