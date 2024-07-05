@@ -201,6 +201,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Producto en el carrito.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -234,6 +240,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Cantidad del producto en el carrito.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -252,8 +264,10 @@ import { RouterModule, Router } from &#x27;@angular/router&#x27;;
  * Interfaz que define la estructura de un item en el carrito de compras.
  */
 interface CarritoItem {
-  product: Product; // Producto en el carrito
-  quantity: number; // Cantidad del producto en el carrito
+  /** Producto en el carrito. */
+  product: Product;
+  /** Cantidad del producto en el carrito. */
+  quantity: number;
 }
 
 /**
@@ -267,12 +281,22 @@ interface CarritoItem {
   imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe] // Módulos importados necesarios para el componente
 })
 export class CarritoComponent implements OnInit {
-  carritoItems: CarritoItem[] &#x3D; []; // Array que contiene los items del carrito
-  total: number &#x3D; 0; // Total de la compra
-  paymentMethod: string &#x3D; &#x27;&#x27;; // Método de pago seleccionado
-  paymentMessage: string &#x3D; &#x27;&#x27;; // Mensaje de estado del pago
-  isCartEmpty: boolean &#x3D; true; // Indica si el carrito está vacío
+  /** Array que contiene los items del carrito. */
+  carritoItems: CarritoItem[] &#x3D; [];
+  /** Total de la compra. */
+  total: number &#x3D; 0;
+  /** Método de pago seleccionado. */
+  paymentMethod: string &#x3D; &#x27;&#x27;;
+  /** Mensaje de estado del pago. */
+  paymentMessage: string &#x3D; &#x27;&#x27;;
+  /** Indica si el carrito está vacío. */
+  isCartEmpty: boolean &#x3D; true;
 
+  /**
+   * Constructor del componente CarritoComponent.
+   * @param carritoService Servicio para gestionar el carrito de compras.
+   * @param router Servicio de enrutamiento de Angular.
+   */
   constructor(private carritoService: CarritoService, private router: Router) { }
 
   /**

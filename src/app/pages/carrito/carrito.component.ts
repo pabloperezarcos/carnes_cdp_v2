@@ -9,8 +9,10 @@ import { RouterModule, Router } from '@angular/router';
  * Interfaz que define la estructura de un item en el carrito de compras.
  */
 interface CarritoItem {
-  product: Product; // Producto en el carrito
-  quantity: number; // Cantidad del producto en el carrito
+  /** Producto en el carrito. */
+  product: Product;
+  /** Cantidad del producto en el carrito. */
+  quantity: number;
 }
 
 /**
@@ -24,12 +26,22 @@ interface CarritoItem {
   imports: [CommonModule, FormsModule, RouterModule, CurrencyPipe] // Módulos importados necesarios para el componente
 })
 export class CarritoComponent implements OnInit {
-  carritoItems: CarritoItem[] = []; // Array que contiene los items del carrito
-  total: number = 0; // Total de la compra
-  paymentMethod: string = ''; // Método de pago seleccionado
-  paymentMessage: string = ''; // Mensaje de estado del pago
-  isCartEmpty: boolean = true; // Indica si el carrito está vacío
+  /** Array que contiene los items del carrito. */
+  carritoItems: CarritoItem[] = [];
+  /** Total de la compra. */
+  total: number = 0;
+  /** Método de pago seleccionado. */
+  paymentMethod: string = '';
+  /** Mensaje de estado del pago. */
+  paymentMessage: string = '';
+  /** Indica si el carrito está vacío. */
+  isCartEmpty: boolean = true;
 
+  /**
+   * Constructor del componente CarritoComponent.
+   * @param carritoService Servicio para gestionar el carrito de compras.
+   * @param router Servicio de enrutamiento de Angular.
+   */
   constructor(private carritoService: CarritoService, private router: Router) { }
 
   /**
