@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
 import { map, tap } from 'rxjs/operators';
 
+/**
+ * Servicio para la gestión de productos, incluyendo operaciones CRUD y carga desde JSON.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -14,27 +17,51 @@ export class ProductService {
 
   constructor(private firestore: Firestore, private http: HttpClient) { }
 
+  /**
+   * Obtiene todos los productos desde Firestore.
+   * @returns Un Observable que emite un array de productos.
+   */
   getProducts(): Observable<Product[]> {
     const productsRef = collection(this.firestore, 'productos');
     return collectionData(productsRef, { idField: 'id' }) as Observable<Product[]>;
   }
 
+  /**
+   * Agrega un nuevo producto a Firestore.
+   * @param product El producto a agregar.
+   * @returns Un Observable que completa cuando se agrega el producto.
+   */
   addProduct(product: Product): Observable<void> {
     const productsRef = collection(this.firestore, 'productos');
     const newDocRef = doc(productsRef);
     return from(setDoc(newDocRef, { ...product })) as Observable<void>;
   }
 
+  /**
+   * Actualiza un producto existente en Firestore.
+   * @param id El ID del producto a actualizar.
+   * @param product El producto actualizado.
+   * @returns Un Observable que completa cuando se actualiza el producto.
+   */
   updateProduct(id: string, product: Product): Observable<void> {
     const productDoc = doc(this.firestore, `productos/${id}`);
     return from(updateDoc(productDoc, { ...product })) as Observable<void>;
   }
 
+  /**
+   * Elimina un producto existente de Firestore.
+   * @param id El ID del producto a eliminar.
+   * @returns Un Observable que completa cuando se elimina el producto.
+   */
   deleteProduct(id: string): Observable<void> {
     const productDoc = doc(this.firestore, `productos/${id}`);
     return from(deleteDoc(productDoc)) as Observable<void>;
   }
 
+  /**
+   * Obtiene los productos desde un archivo JSON externo mediante una solicitud HTTP.
+   * @returns Un Observable que emite un array de productos desde el JSON.
+   */
   getProductsFromJson(): Observable<Product[]> {
     return this.http.get<{ productos: Product[] }>(this.jsonUrl).pipe(
       tap(response => console.log('JSON response:', response)), // Verificar respuesta
@@ -43,6 +70,10 @@ export class ProductService {
     );
   }
 
+  /**
+   * Carga los productos desde un archivo JSON externo a Firestore.
+   * @returns Un Observable que completa cuando se cargan todos los productos.
+   */
   loadProductsToFirestore(): Observable<void> {
     return this.getProductsFromJson().pipe(
       map(products => {
@@ -56,6 +87,11 @@ export class ProductService {
     );
   }
 
+  /**
+   * Busca productos en Firestore que coincidan con el término de búsqueda.
+   * @param queryStr El término de búsqueda.
+   * @returns Un Observable que emite un array de productos que coinciden con la búsqueda.
+   */
   searchProducts(queryStr: string): Observable<Product[]> {
     return this.getProducts().pipe(
       map(products => products.filter(product =>
