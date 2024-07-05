@@ -8,9 +8,11 @@ import { registerLocaleData } from '@angular/common';
 import localeEsCL from '@angular/common/locales/es-CL';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { environment } from '../environments/environment';
 
-// Registra los datos de localización
 registerLocaleData(localeEsCL);
 
 export const appConfig: ApplicationConfig = {
@@ -20,7 +22,12 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     importProvidersFrom(FormsModule),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideAnalytics(() => getAnalytics()),
+    ScreenTrackingService,
+    UserTrackingService,
     { provide: LOCALE_ID, useValue: 'es-CL' }
   ]
 };

@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "carnescdp",
+    "carnescdp": "carnescdp"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

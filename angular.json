@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "carnes_cdp_v2": {
+    "carnescdp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/carnes_cdp_v2",
+            "outputPath": "dist/carnescdp",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -83,10 +83,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "carnes_cdp_v2:build:production"
+              "buildTarget": "carnescdp:build:production"
             },
             "development": {
-              "buildTarget": "carnes_cdp_v2:build:development"
+              "buildTarget": "carnescdp:build:development"
             }
           },
           "defaultConfiguration": "development"

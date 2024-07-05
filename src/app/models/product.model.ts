@@ -1,7 +1,11 @@
+// src/app/models/product.model.ts
 /**
  * Representa un producto en el sistema.
  */
 export class Product {
+    /** Identificador del producto. */
+    id: number;
+
     /** Nombre del producto. */
     nombre: string;
 
@@ -25,6 +29,7 @@ export class Product {
 
     /**
      * Crea una nueva instancia de un producto.
+     * @param id - Identificador del producto.
      * @param nombre - Nombre del producto.
      * @param descripcionCorta - Descripción corta del producto.
      * @param descripcion - Descripción completa del producto.
@@ -34,6 +39,7 @@ export class Product {
      * @param sku - Código SKU del producto.
      */
     constructor(
+        id: number,
         nombre: string,
         descripcionCorta: string,
         descripcion: string,
@@ -42,6 +48,7 @@ export class Product {
         slug: string,
         sku: string
     ) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcionCorta = descripcionCorta;
         this.descripcion = descripcion;

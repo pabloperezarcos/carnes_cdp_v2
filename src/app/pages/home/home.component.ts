@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   testimonios: Testimonio[] = [];
 
   /** URL del archivo JSON de testimonios en Firebase Storage */
-  private testimoniosUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdp.appspot.com/o/testimonios.json?alt=media&token=2e8976ca-8baf-42c9-8990-103d7bf8b89d';
+  private testimoniosUrl = 'https://firebasestorage.googleapis.com/v0/b/carnescdpv2.appspot.com/o/testimonios.json?alt=media&token=a314f03c-2ea6-4184-80a4-8be039047526';
 
   /**
    * Constructor que inyecta el servicio de productos y el cliente HTTP.
