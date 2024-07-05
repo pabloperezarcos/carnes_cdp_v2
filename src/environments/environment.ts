@@ -1,12 +1,19 @@
 export const environment = {
     production: false,
     firebase: {
-        apiKey: "API_KEY",
-        authDomain: "carnescdp.firebaseapp.com",
-        projectId: "carnescdp",
-        storageBucket: "carnescdp.appspot.com",
-        messagingSenderId: "1070608859587",
-        appId: "1:1070608859587:web:ccd5a6d4576f7f6a27fd76",
-        measurementId: "G-0585ZDX2WL"
+        apiKey: "AIzaSyBpHDL7bQ3XPTOtaClNjAjZyFtYwcl_gaY",
+
+        authDomain: "carnescdpv2.firebaseapp.com",
+
+        projectId: "carnescdpv2",
+
+        storageBucket: "carnescdpv2.appspot.com",
+
+        messagingSenderId: "432247060096",
+
+        appId: "1:432247060096:web:840b61645de89b485e1865",
+
+        measurementId: "G-X8NZ26BBRL"
+
     }
 };
