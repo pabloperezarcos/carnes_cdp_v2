@@ -201,6 +201,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Producto en el carrito.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -234,6 +240,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Cantidad del producto en el carrito.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -249,8 +261,10 @@ import { BehaviorSubject } from &#x27;rxjs&#x27;;
  * Interfaz que define la estructura de un item en el carrito.
  */
 interface CarritoItem {
-  product: Product; // Producto en el carrito
-  quantity: number; // Cantidad del producto en el carrito
+  /** Producto en el carrito. */
+  product: Product;
+  /** Cantidad del producto en el carrito. */
+  quantity: number;
 }
 
 /**
@@ -260,13 +274,23 @@ interface CarritoItem {
   providedIn: &#x27;root&#x27;
 })
 export class CarritoService {
-  private carritoItems: CarritoItem[] &#x3D; []; // Array que contiene los items del carrito
-  private carritoSubject &#x3D; new BehaviorSubject&lt;CarritoItem[]&gt;(this.carritoItems); // Sujeto BehaviorSubject para notificar cambios en el carrito
-  carritoActualizado &#x3D; this.carritoSubject.asObservable(); // Observable para suscribirse a cambios en el carrito
-  private purchasedItems: CarritoItem[] &#x3D; []; // Array que contiene los items comprados
+  /** Array que contiene los items del carrito */
+  private carritoItems: CarritoItem[] &#x3D; [];
 
+  /** Sujeto BehaviorSubject para notificar cambios en el carrito */
+  private carritoSubject &#x3D; new BehaviorSubject&lt;CarritoItem[]&gt;(this.carritoItems);
+
+  /** Observable para suscribirse a cambios en el carrito */
+  carritoActualizado &#x3D; this.carritoSubject.asObservable();
+
+  /** Array que contiene los items comprados */
+  private purchasedItems: CarritoItem[] &#x3D; [];
+
+  /**
+   * Constructor que inicializa el servicio y carga el carrito desde el almacenamiento local.
+   */
   constructor() {
-    this.loadCarrito(); // Cargar el carrito almacenado al inicializar el servicio
+    this.loadCarrito();
   }
 
   /**

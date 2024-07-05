@@ -19,14 +19,23 @@ interface CarritoItem {
   providedIn: 'root'
 })
 export class CarritoService {
-  private carritoItems: CarritoItem[] = []; // Array que contiene los items del carrito
-  private carritoSubject = new BehaviorSubject<CarritoItem[]>(this.carritoItems); // Sujeto BehaviorSubject para notificar cambios en el carrito
-  /** Observable para suscribirse a cambios en el carrito. */
-  carritoActualizado = this.carritoSubject.asObservable();
-  private purchasedItems: CarritoItem[] = []; // Array que contiene los items comprados
+  /** Array que contiene los items del carrito */
+  private carritoItems: CarritoItem[] = [];
 
+  /** Sujeto BehaviorSubject para notificar cambios en el carrito */
+  private carritoSubject = new BehaviorSubject<CarritoItem[]>(this.carritoItems);
+
+  /** Observable para suscribirse a cambios en el carrito */
+  carritoActualizado = this.carritoSubject.asObservable();
+
+  /** Array que contiene los items comprados */
+  private purchasedItems: CarritoItem[] = [];
+
+  /**
+   * Constructor que inicializa el servicio y carga el carrito desde el almacenamiento local.
+   */
   constructor() {
-    this.loadCarrito(); // Cargar el carrito almacenado al inicializar el servicio
+    this.loadCarrito();
   }
 
   /**
