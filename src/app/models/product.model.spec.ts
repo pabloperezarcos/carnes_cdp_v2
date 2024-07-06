@@ -3,16 +3,18 @@ import { Product } from './product.model';
 describe('Product', () => {
   it('should create an instance of Product with correct properties', () => {
     const product = new Product(
-      'Nombre del producto',
-      'Descripción corta del producto',
-      'Descripción del producto',
-      100,
-      'imagen.png',
-      'slug-del-producto',
-      'SKU12345'
+      '1', // id
+      'Nombre del producto', // nombre
+      'Descripción corta del producto', // descripcionCorta
+      'Descripción del producto', // descripcion
+      100, // precio
+      'imagen.png', // imagen
+      'slug-del-producto', // slug
+      'SKU12345' // sku
     );
 
     expect(product).toBeTruthy();
+    expect(product.id).toBe('1');
     expect(product.nombre).toBe('Nombre del producto');
     expect(product.descripcionCorta).toBe('Descripción corta del producto');
     expect(product.descripcion).toBe('Descripción del producto');
