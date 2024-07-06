@@ -1,25 +1,20 @@
-# Etapa 1: Dependencias de desarrollo
-FROM node:20.14.0 AS dev-deps
+# Etapa 1: Construcción
+FROM node:20.14.0 AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-
+COPY package*.json ./
 RUN npm install
 
-# Etapa 2: Construcción
-FROM node:20.14.0 AS builder
-
-WORKDIR /app
-COPY --from=dev-deps /app/node_modules ./node_modules
 COPY . .
+RUN npm run build -- --configuration production
 
-RUN npm run build
+# Etapa 2: Producción
+FROM nginx:alpine
+COPY --from=build /app/dist/carnescdp/browser /usr/share/nginx/html
 
-# Etapa 3: Producción
-FROM nginx:1.23.3 AS prod
+# Verificar si el archivo index.csr.html existe y renombrarlo a index.html
+RUN if [ -f /usr/share/nginx/html/index.csr.html ]; then mv /usr/share/nginx/html/index.csr.html /usr/share/nginx/html/index.html; fi
+
 EXPOSE 80
-
-COPY --from=builder /app/dist/carnescdp /usr/share/nginx/html
-
 CMD ["nginx", "-g", "daemon off;"]
